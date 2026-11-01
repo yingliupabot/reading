@@ -3,16 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trading Ideas</title>
+<title>Reading</title>
 <script>(function(){var t;try{t=localStorage.getItem('ti-theme');}catch(e){}if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="styles.css">
+<style>.latest-list{list-style:none;padding:0;margin:14px 0}.latest-list li{padding:10px 0;border-bottom:1px solid var(--border)}.latest-list a{font-weight:600}.latest-list .tag-pill{margin-right:8px}</style>
 </head>
 <body>
 <nav class="navbar">
   <div class="nav-inner">
     <button class="icon-btn hamburger" id="sidebar-toggle" aria-label="打开目录">☰</button>
-    <a class="brand" href="index.html"><span class="logo-dot">📈</span><span class="brand-text">Trading Ideas</span></a>
+    <a class="brand" href="index.html"><span class="logo-dot">📈</span><span class="brand-text">Reading</span></a>
     <div class="nav-links">
       <a href="index.html" class="active">首页</a>
       <a href="trading-ideas/">Trading Ideas</a>
@@ -24,7 +25,7 @@
         <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-15v2m0 16v2M4.2 4.2l1.4 1.4m12.8 12.8 1.4 1.4M2 12h2m16 0h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
-      <a class="icon-btn" href="https://github.com/yingliupabot/trading-ideas" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">
+      <a class="icon-btn" href="https://github.com/yingliupabot/reading" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">
         <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
       </a>
     </div>
@@ -42,7 +43,7 @@
 
   <main class="content">
     <div class="top">
-      <h1>Trading Ideas</h1>
+      <h1>Reading</h1>
       <p class="sub">交易研读、读书笔记与世界地图，三个入口，各走各的路。</p>
     </div>
 
@@ -76,7 +77,30 @@
       </a>
     </div>
 
-    <footer>trading-ideas · 内容仅作学习交流，不构成投资建议</footer>
+<div class="top" style="margin-top:32px">
+      <h2>最新文章</h2>
+      <p class="sub">已发布笔记 15 篇 · 点子库 103 条（已发布 12 · 已杀 81 · 待扒 10）· 读书笔记 3 / 33 章 · 世界地图词条 37 条</p>
+    </div>
+    <ul class="latest-list">
+      <li><span class="tag-pill">2026-10-12</span> <a href="读书笔记/逃不开的经济周期/03-金钱梦之队/">《逃不开的经济周期》第 3 章 · 金钱梦之队</a> · 读书笔记</li>
+      <li><span class="tag-pill">2026-10-08</span> <a href="读书笔记/逃不开的经济周期/02-现金支付危机/">《逃不开的经济周期》第 2 章 · 现金支付危机</a> · 读书笔记</li>
+      <li><span class="tag-pill">2026-09-25</span> <a href="trading-ideas/portfolio/conditional-volmanage/">条件式多因子 volatility management（自研）</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-25</span> <a href="trading-ideas/cef/cef-discount-quintile/">封闭式基金折价五分位套利</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-25</span> <a href="trading-ideas/credit/fallen-angels-reversal/">堕落天使强制抛售反转</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-24</span> <a href="trading-ideas/crypto/btc-mvrv-timing/">BTC MVRV估值择时</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-21</span> <a href="trading-ideas/industry/prop-trading-firms/">Prop Trading 到底有多少种？一张赚钱模式地图</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-19</span> <a href="读书笔记/逃不开的经济周期/01-密西西比泡沫/">《逃不开的经济周期》第 1 章 · 密西西比泡沫破裂</a> · 读书笔记</li>
+      <li><span class="tag-pill">2026-09-18</span> <a href="trading-ideas/portfolio/momentum-regime-overlay/">动量熊市 Overlay</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-18</span> <a href="trading-ideas/papers/momentum-jegadeesh-titman-1993/">Returns to Buying Winners and Selling Losers 研读</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-18</span> <a href="trading-ideas/data-sources/beyond-ohlc/">OHLC 之外：散户可用的数据源地图</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-18</span> <a href="trading-ideas/papers/ml-asset-pricing-gu-kelly-xiu-2020/">Empirical Asset Pricing via Machine Learning 研读</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-18</span> <a href="trading-ideas/reddit-strategies/close-near-low/">Close-Near-Low 均值回归策略研读</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-17</span> <a href="trading-ideas/tradingview-pine-scripts/volume-delta-footprint/">Volume Delta Footprint Map 研读</a> · 交易研读</li>
+      <li><span class="tag-pill">2026-09-17</span> <a href="trading-ideas/tradingview-pine-scripts/intrabar-profile/">Intrabar Profile 研读</a> · 交易研读</li>
+    </ul>
+    <p class="sub">点子库全表（含已杀点子的死因）在 Trading Ideas → 点子库。</p>
+
+        <footer>Reading · 内容仅作学习交流，不构成投资建议</footer>
   </main>
 </div>
 <script src="theme.js"></script>
