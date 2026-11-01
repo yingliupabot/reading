@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>点子库 · Trading Ideas</title>
+<title>点子库 · Reading</title>
 <script>(function(){var t;try{t=localStorage.getItem('ti-theme');}catch(e){}if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <link rel="stylesheet" href="../styles.css">
@@ -64,10 +64,10 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
 <nav class="navbar">
   <div class="nav-inner">
     <button class="icon-btn hamburger" id="sidebar-toggle" aria-label="打开目录">☰</button>
-    <a class="brand" href="../index.html"><span class="logo-dot">📈</span><span class="brand-text">Trading Ideas</span></a>
+    <a class="brand" href="../index.html"><span class="logo-dot">📈</span><span class="brand-text">Reading</span></a>
     <div class="nav-links">
       <a href="../index.html">首页</a>
-      <a href="index.html" class="active">Trading Ideas</a>
+      <a href="index.html" class="active">Reading</a>
       <a href="../notes.html">读书笔记</a>
       <a href="../世界地图/" target="_blank" rel="noopener">世界地图</a>
     </div>
@@ -76,7 +76,7 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
         <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-15v2m0 16v2M4.2 4.2l1.4 1.4m12.8 12.8 1.4 1.4M2 12h2m16 0h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
-      <a class="icon-btn" href="https://github.com/yingliupabot/trading-ideas" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">
+      <a class="icon-btn" href="https://github.com/yingliupabot/reading" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">
         <svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
       </a>
     </div>
@@ -108,8 +108,8 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
     <a href="tradingview-pine-scripts/intrabar-profile/">Intrabar Profile 研读</a>
     <a href="tradingview-pine-scripts/volume-delta-footprint/">Volume Delta Footprint Map 研读</a>
     <h4>源码</h4>
-    <a href="https://github.com/yingliupabot/trading-ideas/tree/main/trading-ideas/ideas" target="_blank" rel="noopener">🗂 catalog.json 源码</a>
-    <a href="https://github.com/yingliupabot/trading-ideas/blob/main/trading-ideas/ideas/lyra-killed.json" target="_blank" rel="noopener">🪦 lyra-killed.json 源码</a>
+    <a href="https://github.com/yingliupabot/reading/tree/main/trading-ideas/ideas" target="_blank" rel="noopener">🗂 catalog.json 源码</a>
+    <a href="https://github.com/yingliupabot/reading/blob/main/trading-ideas/ideas/lyra-killed.json" target="_blank" rel="noopener">🪦 lyra-killed.json 源码</a>
   </aside>
 
   <main class="content">
@@ -176,7 +176,7 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
       最后更新：这一行最后一次变动的日期。取 catalog.json 的 <code>date_updated</code>，没有就是加入日期；lyra 杀的点子取 lyra-killed.json 里它的 <code>date_updated</code>，两个都有取较晚的。表按它从新到旧排。<br>
       谁杀的：<b>trading-ideas</b> 是这个仓库自己的回测和收录门杀的，死因是备注的第一句，全文在「备注 / 死因」里；<b>lyra</b> 是私有仓库 lyra 用自己的数据测过后杀的，粗体是死因，旁边是它测过的变体数，点「证据」看死因的解释和 lyra 的一句英文证据，都来自 lyra-killed.json。</p>
 
-    <footer>trading-ideas · 内容仅作学习交流，不构成投资建议</footer>
+    <footer>Reading · 内容仅作学习交流，不构成投资建议</footer>
   </main>
 </div>
 <script src="../theme.js"></script>
