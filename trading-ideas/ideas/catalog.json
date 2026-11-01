@@ -1620,7 +1620,7 @@
       "source_name": "博客",
       "source_url": "https://www.algogators.com/_files/ugd/de05d6_b9908575d73b4b9792f8c1e8842c0b66.pdf",
       "aliases": [],
-      "date_added": "2026-09-24",
+      "date_added": "2026-09-24", "date_updated": "2026-11-01",
       "status": "backlog",
       "verdict": "blocked",
       "claim": "FRED高收益OAS>500bp或持续走阔时持HYG收利差否则持LQD；累计收益和Sharpe跑赢AGG。",
@@ -1633,7 +1633,7 @@
         "strategy"
       ],
       "note_url": null,
-      "notes": "FRED BAMLH0A0HYM2 免 key 路径结构性限流（2026-09-24 重试确认）：fredgraph.csv 无论带何种日期参数（cosd/coed、observation_start/end 均实测）都只返回 2023-09-25→2026-09-23 共 795 行；对照实验证明是序列特有授权限制（同参数对 DGS10 可拉回 1996 年，p10 成功）。第三方交叉确认：2026 年 4 月起 FRED 将该 ICE 授权序列限制为滚动约 3 年窗口，1996 年以来的全历史只能走带 key 的 FRED API。DBnomics API 本机网络不可达，无其他免费全历史源。'靠谱' bar 要求 ≥10 年且覆盖 2008，仅 2-3 年数据无法满足；用 BAA-AAA/VIX 等代理序列会改变规则量纲与 500bp 阈值，不忠实，故不硬测。重试路径：用户在 fredaccount.stlouisfed.org/apikey 注册免费 key 后，用 api.stlouisfed.org/fred/series/observations?series_id=BAMLH0A0HYM2&api_key=KEY&file_type=csv 拉全量再重跑。验证记录：sweeps/marathon/p8-credit-spread/DATA_NOTES.md（含 2 年样本 oas.csv 作为限流证据）。"
+      "notes": "FRED BAMLH0A0HYM2 免 key 路径结构性限流（2026-09-24 重试确认）：fredgraph.csv 无论带何种日期参数（cosd/coed、observation_start/end 均实测）都只返回 2023-09-25→2026-09-23 共 795 行；对照实验证明是序列特有授权限制（同参数对 DGS10 可拉回 1996 年，p10 成功）。第三方交叉确认：2026 年 4 月起 FRED 将该 ICE 授权序列限制为滚动约 3 年窗口，1996 年以来的全历史只能走带 key 的 FRED API。DBnomics API 本机网络不可达，无其他免费全历史源。'靠谱' bar 要求 ≥10 年且覆盖 2008，仅 2-3 年数据无法满足；用 BAA-AAA/VIX 等代理序列会改变规则量纲与 500bp 阈值，不忠实，故不硬测。重试路径：用户在 fredaccount.stlouisfed.org/apikey 注册免费 key 后，用 api.stlouisfed.org/fred/series/observations?series_id=BAMLH0A0HYM2&api_key=KEY&file_type=csv 拉全量再重跑。验证记录：sweeps/marathon/p8-credit-spread/DATA_NOTES.md（含 2 年样本 oas.csv 作为限流证据）。2026-11-01复探：live browser只读核查FRED BAMLH0A0HYM2，2023-10-31→2026-10-29，约794点，仍约3年滚动窗口（FRED注：2026-04起该序列只含3年观测），仍不满足≥10年且覆盖2008，仍blocked，仍需用户FRED key走带key API。"
     },
     {
       "id": "p9-crypto-xsmom",
@@ -2600,7 +2600,7 @@
       "source_name": "自研（Google Trends 注意力反转做空 top10）",
       "source_url": "https://www3.nd.edu/~zda/tale2attention.pdf",
       "aliases": [],
-      "date_added": "2026-09-25",
+      "date_added": "2026-09-25", "date_updated": "2026-11-01",
       "status": "backlog",
       "verdict": "blocked",
       "claim": "每月初对 S&P 100 计算 ticker Google Trends 周搜索量环比，增幅最大 top10 做空、持有 1 个月；累计收益和 Sharpe 跑赢 SPY buy-hold。",
@@ -2614,7 +2614,7 @@
         "strategy"
       ],
       "note_url": null,
-      "notes": "BLOCKED（数据不行，不硬测）。pytrends 对本机出口 IP 限流：裸请求/带 cookie 均 HTTP 429；TrendReq 初始化后 widget 请求 read timeout（60s/90s 均试过）；feasibility（15 ticker x 3 采样）跑 13 分钟 0 batch 完成；60 分钟冷却后单次探针 PROBE_OK（1.6s 返回 93 行，证明按量限流非永久封禁），但探针后连续 12 次尝试全部失败（411/ProxyError 交替）。全样本需 69 次成功请求（92 ticker / 4 每批 x 3 采样），以观测到的限流行为（冷却 60 分钟换 1 次成功）不可完成。重试路径：scripts/download_trends.py + backtest.py 已就绪并通过合成数据端到端验证（anchor=AAPL 跨批归一化、3 采样中位数、歧义 ticker 剔除名单已编码）；data/prices.csv（S&P 100 + SPY，2007-06→2026-09，4860 天）已缓存。待 IP 解限或换出口后重跑。产物见 sweeps/marathon/r3-attention-reversal/。"
+      "notes": "BLOCKED（数据不行，不硬测）。pytrends 对本机出口 IP 限流：裸请求/带 cookie 均 HTTP 429；TrendReq 初始化后 widget 请求 read timeout（60s/90s 均试过）；feasibility（15 ticker x 3 采样）跑 13 分钟 0 batch 完成；60 分钟冷却后单次探针 PROBE_OK（1.6s 返回 93 行，证明按量限流非永久封禁），但探针后连续 12 次尝试全部失败（411/ProxyError 交替）。全样本需 69 次成功请求（92 ticker / 4 每批 x 3 采样），以观测到的限流行为（冷却 60 分钟换 1 次成功）不可完成。重试路径：scripts/download_trends.py + backtest.py 已就绪并通过合成数据端到端验证（anchor=AAPL 跨批归一化、3 采样中位数、歧义 ticker 剔除名单已编码）；data/prices.csv（S&P 100 + SPY，2007-06→2026-09，4860 天）已缓存。待 IP 解限或换出口后重跑。产物见 sweeps/marathon/r3-attention-reversal/。2026-11-01复探：单次pytrends探针（AAPL，2026-06→2026-09，geo=US），1.3秒即411，与10-31形态一致，全样本69次成功请求仍不可完成，仍blocked。"
     },
     {
       "id": "r4-hash-ribbons-regime",
@@ -3216,7 +3216,7 @@
       "source_name": "Loughran-McDonald 延伸复现",
       "source_url": "https://github.com/m4a1ak471994/lm2011-extension",
       "aliases": [],
-      "date_added": "2026-09-25", "date_updated": "2026-10-31",
+      "date_added": "2026-09-25", "date_updated": "2026-11-01",
       "status": "in_progress",
       "verdict": null,
       "claim": "每财报季按 MD&A 负面词占比（LM 词典）做多负面最少/做空负面最多五分位；累计收益和 Sharpe 跑赢等权全市场。",
@@ -3229,7 +3229,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。第一腿完成，完整回测未做：LM Master Dictionary（2026-03更新）已从 sraf.nd.edu 词典页直下（9,093,460字节，86,553词，负面词2,345个）；EDGAR submissions API 畅通；MD&A抽取原型跑通3/3份10-K样本（坑：目录页Item 7先命中→取最长候选段；AAPL标题用&#160;实体→先unescape再匹配），AAPL 2024负面占比0.816%（17/2084词）、MSFT 2024 0.893%（65/7280词）、AAPL 2025 0.816%（20/2452词）。下一轮：定成分股时点规则与调仓日、批量抽取面板并统计失败率、再做五分位组合回测（旧win门+Sharpe>=1.2硬门槛）。产物：goals/idea-catalog/hidden_files/r5-loughran-mcdonald-filing-tone/。"
+      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。第一腿完成，完整回测未做：LM Master Dictionary（2026-03更新）已从 sraf.nd.edu 词典页直下（9,093,460字节，86,553词，负面词2,345个）；EDGAR submissions API 畅通；MD&A抽取原型跑通3/3份10-K样本（坑：目录页Item 7先命中→取最长候选段；AAPL标题用&#160;实体→先unescape再匹配），AAPL 2024负面占比0.816%（17/2084词）、MSFT 2024 0.893%（65/7280词）、AAPL 2025 0.816%（20/2452词）。下一轮：定成分股时点规则与调仓日、批量抽取面板并统计失败率、再做五分位组合回测（旧win门+Sharpe>=1.2硬门槛）。产物：goals/idea-catalog/hidden_files/r5-loughran-mcdonald-filing-tone/。2026-11-01 Dow-cohort年度窄化版已测（非全市场季度版，通过也不算win）：Universe=Dow 30 as of 2011-01-01（Wikipedia历史变更表：2009-06-08名单至2012-09-24前无变动），事前剔除KFT/DD/UTX（公司行为映射复杂），余27家；每年6月30日前最近一份10-K的MD&A负面词占比（LM词典），7月首个交易日调仓，等权做多负面最少5家/做空负面最多5家，成本单边5bps，窗口2011-07-05→2026-10-30。面板：417份10-K抽取，261份有效语气（≥1000词），每年12-20家；CVX/XOM 0/16（MD&A以FS补充件呈现、无标准Item 7正文标题，排除不硬凑）、IBM 0/16、GE 4/16、PFE 2/16、JPM 6/16、VZ 6/16，早期年份另有展品引用期缺失（T/BAC/AXP/CAT 2011-2015前后），AA 2011-2016与DIS 2011-2019为CIK断点缺失（不混用前身CIK），MCD 2020-2026因抽取段<1000词排除；XOM的company_tickers映射曾指向无10-K的控股实体CIK 2115436，已改用申报主体CIK 34088验证。抽取器v1 longest规则在HD 2025挑错段后叫停，v2（标题感知结尾+结尾类型优先+组内最晚起点，子集安全）+1000词有效门为准，MSFT 2024精确复现7280词/65负面/0.893%，v3（引用从句过滤+组内最长）试验后否决（HD 2025挑中Business超集段22,538词/2.64%更差）。结果（Sharpe rf=0×√252，分割事前锁定筛选段2011-07-05→2023-10-03/留出段2023-10-04→2026-10-30）：筛选段策略0.367 vs 门1.230（SPY 0.730）不过，留出段-0.224 vs 门1.908（SPY 1.408）不过，全样本0.241 vs SPY 0.850，熊市段（56天）-1.374 < SPY -1.079 不过，非熊市段0.299 vs 0.987；累计（复利spread，仅报告）全样本+44.6% vs SPY +636.6%（筛选段+65.8% vs +296.3%，留出段-12.8% vs +85.9%），最大回撤-38.1% vs SPY -33.7%。另：仅39笔进腿交易（68次仓位变动），低于100笔下限，本身亦判blocked。实质：腿高度固化（做多常年MCD/MSFT/HD/HPQ/WMT/VZ，做空常年TRV/KO/BAC/JPM/BA），原始负面占比主要由公司/行业固定效应驱动（金融业MD&A结构性多负面词），raw五分位近似行业 bet。判决：窄化版失败，但不直接杀全市场季度版claim，仍in_progress；下一轮须做全市场季度版（交易数亦将随之达标），若同样失败则杀；行业中性版如要做应另立新条目，不作为本条的 rescue。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging/（PRE_REGISTER.md、panel.csv、backtest_results.json）。"
     },
     {
       "id": "r5-short-interest-crosssection",
