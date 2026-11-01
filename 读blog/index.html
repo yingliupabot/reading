@@ -3,68 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>读 Blog · Reading</title>
+<title>读 Blog</title>
 <script>(function(){var t;try{t=localStorage.getItem('ti-theme');}catch(e){}if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="../styles.css">
+<style>
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 24px}
+.cat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px}
+.cat-card h2{font-size:15px;margin:8px 0 4px}
+.cat-card p{color:var(--muted);margin:0;font-size:13px}
+.cat-icon{font-size:20px}
+.article-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+.article-card h3{margin:8px 0 6px}
+.article-card p{margin:6px 0}
+.tag-pill{display:inline-block;background:var(--accent-soft);color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:2px 10px;font-size:12px}
+.article-card .meta{color:var(--muted);font-size:13px;margin:8px 0 0}
+@media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cat-grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
 <nav class="navbar">
-  <div class="nav-inner">
-    <button class="icon-btn hamburger" id="sidebar-toggle" aria-label="打开目录">☰</button>
-    <a class="brand" href="../index.html"><span class="logo-dot">📈</span><span class="brand-text">Reading</span></a>
-    <div class="nav-links">
-      <a href="../index.html">首页</a>
-      <a href="../trading-ideas/">Trading Ideas</a>
-      <a href="index.html" class="active">读 Blog</a>
-      <a href="../notes.html">读书笔记</a>
-      <a href="../世界地图/" target="_blank" rel="noopener">世界地图</a>
-    </div>
-    <div class="nav-actions">
-      <button class="icon-btn" id="theme-toggle" aria-label="切换深色/浅色" title="切换深色/浅色">切换深色/浅色</button>
-      <a class="icon-btn" href="https://github.com/yingliupabot/reading" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">GitHub 仓库</a>
-    </div>
-  </div>
+<div class="nav-inner">
+<button class="icon-btn hamburger" id="sidebar-toggle" aria-label="打开目录">☰</button>
+<a class="brand" href="../index.html"><span class="logo-dot"></span><span class="brand-text">Reading</span></a>
+<div class="nav-links">
+<a href="../index.html">首页</a>
+<a href="../trading-ideas/">Trading Ideas</a>
+<a href="./" class="active">读 Blog</a>
+<a href="../notes.html">读书笔记</a>
+<a href="../世界地图/" target="_blank" rel="noopener">世界地图</a>
+</div>
+<div class="nav-actions">
+<button class="icon-btn" id="theme-toggle" aria-label="切换深色/浅色" title="切换深色/浅色">
+<svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+<svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-15v2m0 16v2M4.2 4.2l1.4 1.4M18.8 18.8l1.4 1.4M1 12h2m16 0h2M4.2 19.8l1.4-1.4M18.8 5.2l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+</button>
+<a class="icon-btn" href="https://github.com/yingliupabot/reading" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">
+<svg viewBox="0 0 24 24"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .3.2.67.85.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+</a>
+</div>
+</div>
 </nav>
 <div class="scrim" id="scrim"></div>
 <div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <h4>入口</h4>
-    <a href="../index.html">🏠 首页</a>
-    <a href="../trading-ideas/">📈 Trading Ideas</a>
-    <a href="index.html">📖 读 Blog</a>
-    <a href="../notes.html">📚 读书笔记</a>
-    <a href="../世界地图/" target="_blank" rel="noopener">🗺 世界地图</a>
-  </aside>
-  <main class="content">
-    <div class="top">
-      <h1>📖 读 Blog</h1>
-      <p class="sub">每日阅读：按兴趣类别收集值得读的文章，先放进待读清单，再每天挑着读。</p>
-      <p><a href="setup.html">Setup：每日阅读设置 →</a></p>
-    </div>
-    <h2>GitHub 交易 / AI 短剧热门</h2>
-    <p class="sub">GitHub 上与交易、AI 短剧相关的热门内容。</p>
-    <ul><li><a href="https://github.com/nautechsystems/nautilus_trader" target="_blank" rel="noopener">NautilusTrader</a> — 生产级 Rust 交易引擎，Python 写策略。核心：确定性事件驱动架构，Rust 核心 + Python 策略层；回测用 quote tick、trade tick、bar、order book，纳秒分辨率；同一份策略代码跑回测和实盘；资产覆盖股票、期货、期权、外汇、crypto，带 Interactive Brokers 适配器。注意：这是基础设施，不是策略，不带任何策略收益 claim；学习曲线陡，v2 过渡期 API 可能有 breaking change；行情数据需自备。来源：https://github.com/nautechsystems/nautilus_trader ，分类：GitHub 交易 / AI 短剧热门，渠道：GitHub。人气（2026-11-01 实查）：31,135 stars / 4,196 forks，LGPL-3.0。</li></ul>
-    <h2>GitHub 其他热门</h2>
-    <p class="sub">GitHub 上其他值得关注的热门内容。</p>
-    <ul><li>待读文章待添加</li></ul>
-    <h2>YouTube 教育</h2>
-    <p class="sub">YouTube 上的教育类内容。</p>
-    <ul><li>待读文章待添加</li></ul>
-    <h2>炒股新闻</h2>
-    <p class="sub">与炒股相关的新闻。</p>
-    <ul><li>待读文章待添加</li></ul>
-    <h2>待读清单</h2>
-    <p class="sub">按类别整理的待读内容，读完后从清单中移除。</p>
-    <ul>
-      <li>GitHub 交易 / AI 短剧热门：NautilusTrader（待读）</li>
-      <li>GitHub 其他热门：待添加</li>
-      <li>YouTube 教育：待添加</li>
-      <li>炒股新闻：待添加</li>
-    </ul>
-    <footer>Reading · 内容仅作学习交流，不构成投资建议</footer>
-  </main>
+<aside class="sidebar" id="sidebar">
+<h4>入口</h4>
+<a href="../trading-ideas/">📈 Trading Ideas</a>
+<a href="../notes.html">📚 读书笔记</a>
+<a href="../世界地图/" target="_blank" rel="noopener">🌍 世界地图</a>
+</aside>
+<main class="content">
+<h1>读 Blog</h1>
+<p class="sub">每日阅读记录：精选值得一读的文章与视频，详见 <a href="setup.html">Setup</a>。</p>
+<section class="cat-grid">
+<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>1 篇待读</p></article>
+<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>待添加</p></article>
+<article class="cat-card"><span class="cat-icon">▶️</span><h2>YouTube 教育</h2><p>待添加</p></article>
+<article class="cat-card"><span class="cat-icon">📰</span><h2>炒股新闻</h2><p>待添加</p></article>
+</section>
+<section>
+<h2>待读</h2>
+<article class="article-card">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/nautechsystems/nautilus_trader">NautilusTrader</a></h3>
+<p>生产级 Rust 交易引擎，Python 写策略。</p>
+<p class="meta">来源：GitHub · 31,135 stars / 4,196 forks · LGPL-3.0</p>
+</article>
+</section>
+</main>
 </div>
+<footer class="footer">
+<p>© 2025 Reading · <a href="https://github.com/yingliupabot/reading">GitHub</a></p>
+</footer>
 <script src="../theme.js"></script>
 </body>
 </html>
