@@ -824,7 +824,7 @@
         "RSI-2",
         "Larry Connors"
       ],
-      "date_added": "2026-09-18",
+      "date_added": "2026-09-18", "date_updated": "2026-10-31",
       "status": "killed",
       "verdict": "fail",
       "claim": "2 日 RSI 超卖均值回归（Connors 规则）。",
@@ -846,7 +846,7 @@
         "sweep"
       ],
       "note_url": null,
-      "notes": "sweep 第二批唯一 Sharpe 大幅 > 基线（1.349 vs 0.805），胜率 80.7%，最大回撤仅 -6.4%，但收益输 100pp，未达胜者判定。短线均值回归里风险调整最好的一个，方向对但仓位/持有期吃掉了收益。"
+      "notes": "sweep 第二批唯一 Sharpe 大幅 > 基线（1.349 vs 0.805），胜率 80.7%，最大回撤仅 -6.4%，但收益输 100pp，未达胜者判定。短线均值回归里风险调整最好的一个，方向对但仓位/持有期吃掉了收益。拉长窗口重测，维持 killed。规则与原 sweep 完全一致（RSI(2)<10 且收盘>SMA(200) 入场、收盘>SMA(5) 出场，信号日收盘执行、次日生效），成本单边 5bps（held 变化日各扣 5bps，往返 10bps），Sharpe rf=0（日收益×√252），SPY yfinance auto_adjust 全历史 1993-01-29→2026-10-30（8497 交易日，266 笔交易，含 2000、2008、2020、2022 熊市）。复现校验：无成本原窗口 2020-01-02→2026-09-17 恰好复现 1.349/0.805、57 笔，代码口径无漂移；加成本后原窗口即降至 1.186，已低于 1.305 的门。长窗口：筛选段（1993→2020-01-27，前 80%）策略 0.659 vs SPY 0.603（门 1.103），留出段（2020-01-28→2026-10-30，后 20%）1.028 vs SPY 0.799（门 1.299），全样本 0.730 vs SPY 0.645（门 1.145）——绝对门（>0.6）三段皆过，相对门三段皆不过；熊市段（SPY 回撤 ≥20% 的 1428 日，合并）策略 0.278 > SPY -0.238，熊市段过但系熊市中基本空仓（留出段熊市 56 日策略 Sharpe 0.0）而非熊市赚钱。结论：原窗口高 Sharpe 是窗口特异 + 未计成本所致，长窗口 + 成本 + 分段 + 留出段下不过新门，维持 killed，不翻案。产物：goals/idea-catalog/hidden_files/rsi2-long/（backtest.py、results.json、SPY_long.csv、series.csv）。"
     },
     {
       "id": "sweep-rsi14-3070",
@@ -3171,12 +3171,12 @@
       "source_name": "Avellaneda & Lee 2010（论文）",
       "source_url": "https://arxiv.org/pdf/1002.2286",
       "aliases": [],
-      "date_added": "2026-09-25",
-      "status": "backlog",
-      "verdict": null,
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
+      "status": "killed",
+      "verdict": "fail",
       "claim": "60 日滚动 PCA 残差 z-score，做多最负/做空最正组合，日度调仓行业中性；累计收益和 Sharpe 跑赢 SPY。",
       "baseline": "SPY buy-hold",
-      "result": null,
+      "result": {"baseline": "+758.21%", "baseline_sharpe": 0.847, "excess_ann_pp": -34.19, "excess_pp": -855.88, "max_dd": "-97.71%", "sample": "2010-04-05->2026-10-30", "sharpe": -2.221, "strategy": "-97.67%", "trades": 35135},
       "priority": "medium",
       "tags": [
         "stat-arb",
@@ -3184,7 +3184,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "数据：Stooq/Yahoo 美股日线全历史。日频横截面。"
+      "notes": "killed（fail）。主规格（60日滚动PCA K=5，残差累计z-score，做多最负5只/做空最正5只，等权美元中性，日度调仓持有1日，单边5bps）：策略-97.67% vs SPY +758.21%，超额-855.88pp，Sharpe -2.221 vs 0.847，最大回撤-97.71%，4171调仓日/35135次腿开仓。死因：(1)信号无预测力——残差评分对未来1/5/20日收益的截面IC分别为+0.0007(t=0.18)/+0.0041(t=1.13)/-0.0016(t=-0.42)，毛收益-21.62%/Sharpe -0.097，零成本也输779.82pp；(2)日度换手成本致死——日均8.42bps，把毛收益拖到-97.67%，反向残差动量版扣成本后同样-96.78%，非方向写反；(3)分样本全败（2010-2015 -69.43%/Sharpe -2.365；2016-2026 -92.37%/-2.175；近10年-90.49%/-2.123），行业中性版-96.03%/Sharpe -3.48、K=3/K=10、隔日残差版、近5日残差版全部fail。新硬门槛Sharpe>=1.2远未达到。注：45只股为2026时点选池（2010年起连续上市），幸存者偏差方向上抬高策略表现，故fail结论保守；Avellaneda-Lee原版OU阈值持有至回归退出未单独实现，但IC检验已覆盖1-20日远期，慢速回归亦无信号。产物：goals/idea-catalog/hidden_files/r5-pca-residual-reversal/（backtest.py、prices.csv、results.json）。数据：Yahoo复权价，45股+SPY，2010-01-04→2026-10-30。"
     },
     {
       "id": "r5-merger-arb-spread",
@@ -3194,19 +3194,19 @@
       "source_name": "MNA ETF 方法论",
       "source_url": "https://stgbeta.nylim.com/assets/documents/index-nyli/mna-nyli-merger-arbitrage-etf-fs.pdf",
       "aliases": [],
-      "date_added": "2026-09-25",
-      "status": "backlog",
-      "verdict": null,
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
+      "status": "killed",
+      "verdict": "fail",
       "claim": "做多已公告现金收购目标公司一篮子（相对收购价折价排序），赚取交易完成价差；累计收益和 Sharpe 跑赢 SPY。",
       "baseline": "SPY buy-hold",
-      "result": null,
+      "result": {"baseline": "+816.65%", "baseline_sharpe": 0.856, "excess_ann_pp": -11.3, "excess_pp": -759.97, "max_dd": "-16.68%", "sample": "2009-11-18->2026-10-30", "sharpe": 0.396, "strategy": "+56.68%", "trades": 1},
       "priority": "medium",
       "tags": [
         "merger-arb",
         "event-driven"
       ],
       "note_url": null,
-      "notes": "天然低 beta（MNA 自 2009 运行，beta 0.06）。事件驱动调仓。自建版需 SEC 8-K 公告 + Yahoo；或直接以 MNA（2009-11 起）做被动版本验证。"
+      "notes": "killed（fail）——MNA被动版。MNA buy-hold +56.68% vs SPY +816.65%，超额-759.97pp，Sharpe 0.396 vs 0.856，最大回撤-16.68% vs -33.72%，beta 0.196。死因：双维度皆输，新硬门槛Sharpe>=1.2远未达到；分样本全败（2010-2015 +14.99% vs +107.96%；2016-2026 +36.26% vs +340.79%；近10年 +33.03% vs +316.36%）；2022年确实跑赢（-1.61% vs -18.18%），但2020-02→05 COVID窗口反而跑输（-6.36% vs -4.86%），低beta不是熊市保险。注：杀的是MNA被动实现，自建8-K公告篮子未测，未来主张手工篮子需无前视公告时点数据重测；低beta/浅回撤是真实分散器属性，但按win门不构成win。产物：goals/idea-catalog/hidden_files/r5-merger-arb-spread/（prices.csv、results.json）。数据：Yahoo复权价，2009-11-17→2026-10-30，4263个交易日，buy-hold单边5bps可忽略。"
     },
     {
       "id": "r5-loughran-mcdonald-filing-tone",
@@ -3216,8 +3216,8 @@
       "source_name": "Loughran-McDonald 延伸复现",
       "source_url": "https://github.com/m4a1ak471994/lm2011-extension",
       "aliases": [],
-      "date_added": "2026-09-25",
-      "status": "backlog",
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
+      "status": "in_progress",
       "verdict": null,
       "claim": "每财报季按 MD&A 负面词占比（LM 词典）做多负面最少/做空负面最多五分位；累计收益和 Sharpe 跑赢等权全市场。",
       "baseline": "等权全市场",
@@ -3229,7 +3229,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。"
+      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。第一腿完成，完整回测未做：LM Master Dictionary（2026-03更新）已从 sraf.nd.edu 词典页直下（9,093,460字节，86,553词，负面词2,345个）；EDGAR submissions API 畅通；MD&A抽取原型跑通3/3份10-K样本（坑：目录页Item 7先命中→取最长候选段；AAPL标题用&#160;实体→先unescape再匹配），AAPL 2024负面占比0.816%（17/2084词）、MSFT 2024 0.893%（65/7280词）、AAPL 2025 0.816%（20/2452词）。下一轮：定成分股时点规则与调仓日、批量抽取面板并统计失败率、再做五分位组合回测（旧win门+Sharpe>=1.2硬门槛）。产物：goals/idea-catalog/hidden_files/r5-loughran-mcdonald-filing-tone/。"
     },
     {
       "id": "r5-short-interest-crosssection",
@@ -3239,9 +3239,9 @@
       "source_name": "Boehmer-Jones-Zhang（论文）",
       "source_url": "https://ink.library.smu.edu.sg/lkcsb_research/4660/",
       "aliases": [],
-      "date_added": "2026-09-25",
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
       "status": "backlog",
-      "verdict": null,
+      "verdict": "blocked",
       "claim": "做空 short interest/float 最高十分位（或做多最低十分位对冲）；累计收益和 Sharpe 跑赢等权小盘股。",
       "baseline": "IWM buy-hold",
       "result": null,
@@ -3252,7 +3252,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "强制前置 gate：先确认 FINRA 双周 CSV 免费历史是否够 10 年、disclosure 日期是否 PIT；不满足则此条作废（blocked），不硬测。"
+      "notes": "强制前置 gate：先确认 FINRA 双周 CSV 免费历史是否够 10 年、disclosure 日期是否 PIT；不满足则此条作废（blocked），不硬测。gate 未过，blocked，不硬测。FINRA 官方口径（2026-10-31 实查 finra.org）：互动表与 API 均为 5 年滚动；档案文件回溯至 2014，但 2021-06 前仅含 OTC、不含交易所上市股——对 IWM 上市小盘而言，FINRA 渠道的交易所上市股免费历史约 2021→2026（约 5 年），不够 10 年。PIT 部分本身可构造：结算日为每月 15 日/月末最后一个结算日，报告在结算日后第 2 个营业日 18:00 前上报、公布于结算日后第 7 个营业日，结算日+公布日历均可查，故交易日可定在公布日之后；但历史长度已判死，不因 PIT 可构造而放行。NYSE 集团短 interest 文件为订阅制（SFTP/AWS），非免费渠道，不作为替代。产物：本 diff 与运行日志 goals/idea-catalog/hidden_files/2026-10-31-daily-digging-2219.md。"
     },
     {
       "id": "r5-insider-buying-cluster",
@@ -3285,12 +3285,12 @@
       "source_name": "ainvest 研究",
       "source_url": "https://www.ainvest.com/news/mortgage-rates-6-51-supposed-kill-homebuilders-supply-gap-2605/",
       "aliases": [],
-      "date_added": "2026-09-25",
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
       "status": "backlog",
-      "verdict": null,
+      "verdict": "blocked",
       "claim": "抵押贷款利率加速上行期低配 XHB、企稳/下行期超配（XHB vs SPY 配对）；累计收益和 Sharpe 跑赢 XHB buy-hold。",
       "baseline": "XHB buy-hold",
-      "result": null,
+      "result": {"baseline": "+181.71% (XHB); SPY +771.2%", "baseline_sharpe": 0.315, "excess_pp": 45.39, "max_dd": "-73.51%", "sample": "2006-02-17->2026-10-30", "sharpe": 0.339, "strategy": "+227.1%", "trades": 69},
       "priority": "low",
       "tags": [
         "rates",
@@ -3298,7 +3298,7 @@
         "sector"
       ],
       "note_url": null,
-      "notes": "与已杀 p10（久期择时）不同：这是行业轮动不是久期押注。数据：FRED 30 年期抵押贷款利率（周度，1971 年起）+ XHB/SPY。"
+      "notes": "与已杀 p10（久期择时）不同：这是行业轮动不是久期押注。数据：FRED 30 年期抵押贷款利率（周度，1971 年起）+ XHB/SPY。主规格（事前定死）：周度信号，过去 12 周抵押贷款利率变化 > +0.25pp 则下周持 SPY、否则持 XHB，切换一次扣 10bps（卖+买），周收益 Sharpe（rf=0，×√52），窗口 2006-02-17→2026-10-30（XHB 上市起，1081 周，含 2008/2020/2022 熊市）。点估计全败：全样本 Sharpe 策略 0.339 vs SPY 0.677（门 1.177）、vs XHB 0.315（门 0.815），累计 +227.1% vs XHB +181.71% / SPY +771.2%，最大回撤 -73.51%；筛选段（2006→2022-09）0.297 vs SPY 0.569，留出段（2022-09→2026-10）0.592 vs SPY 1.225 / XHB 0.649；熊市段（SPY 回撤 ≥20% 的 116 周）-0.772 < SPY -0.375。但正式判决为 blocked 而非 killed：20 年仅 69 次切换，低于新规交易数 ≥100 的下限，点估计失败不作定论，不硬杀。FRED MORTGAGE30US 本轮实测全量可拉（1971-04-02→2026-10-29），数据不是瓶颈。产物：goals/idea-catalog/hidden_files/r5-mortgage-homebuilder-rotation/（backtest.py、results.json、MORTGAGE30US.csv、weekly.csv）。"
     },
     {
       "id": "r5-gasoline-discretionary",
@@ -3308,12 +3308,12 @@
       "source_name": "Gelman et al. / AEJ:Macro 2023",
       "source_url": "http://faculty.haas.berkeley.edu/stadelis/gasprices.pdf",
       "aliases": [],
-      "date_added": "2026-09-25",
-      "status": "backlog",
-      "verdict": null,
+      "date_added": "2026-09-25", "date_updated": "2026-10-31",
+      "status": "killed",
+      "verdict": "fail",
       "claim": "过去 4–12 周汽油价格大跌→超配 XLY/低配 XLP，反之亦然；累计收益和 Sharpe 跑赢 XLY buy-hold。",
       "baseline": "XLY buy-hold",
-      "result": null,
+      "result": {"baseline": "N/A（gate 未过，未建策略）", "baseline_sharpe": null, "excess_pp": null, "max_dd": null, "sample": "1998-12-25->2026-10-30", "sharpe": null, "strategy": "N/A（gate 未过，未建策略）", "trades": 0},
       "priority": "low",
       "tags": [
         "macro",
@@ -3321,7 +3321,7 @@
         "lead-lag"
       ],
       "note_url": null,
-      "notes": "强制前置 gate：第一步必须做 lead-lag 回归（汽油价格变化是否领先 XLY/XLP 相对收益），gate 不过直接杀（用户红线 #2）。数据：FRED/EIA 零售汽油周价 + XLY/XLP（1998 年起）。"
+      "notes": "强制前置 gate：第一步必须做 lead-lag 回归（汽油价格变化是否领先 XLY/XLP 相对收益），gate 不过直接杀（用户红线 #2）。gate 未过，直接 killed，未建策略。主检验（事前定死）：过去 12 周汽油价格 % 变化 -> 未来 4 周 XLY-XLP 相对收益，周度，1998-12-25→2026-10-30，1454 周，FRED GASREGW（1990 起全量可拉）+ XLY/XLP 复权价：beta=-0.0145，t=-1.56，p=0.12，corr=-0.041，R2=0.0017，不显著。副检验：4 周->未来 1 周 beta=-0.0120，p=0.22；8 周->未来 4 周 beta=-0.0308，p=0.0087，R2=0.0048——方向同为负，但重叠 4 周远期窗口下常规标准误偏乐观、效应量不足 0.5%，不能反推过门；同期 12 周关系亦约 0（beta=0.0063，p=0.68）。结论：汽油价格变化对 XLY/XLP 相对收益无可交易化领先性。产物：goals/idea-catalog/hidden_files/r5-gasoline-discretionary/（leadlag.py、leadlag_results.json、GASREGW.csv、weekly.csv）。"
     },
     {
       "id": "r5-pead-microcap",
