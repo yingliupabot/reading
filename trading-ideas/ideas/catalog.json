@@ -3217,11 +3217,11 @@
       "source_url": "https://github.com/m4a1ak471994/lm2011-extension",
       "aliases": [],
       "date_added": "2026-09-25", "date_updated": "2026-11-01",
-      "status": "in_progress",
-      "verdict": null,
+      "status": "killed",
+      "verdict": "fail",
       "claim": "每财报季按 MD&A 负面词占比（LM 词典）做多负面最少/做空负面最多五分位；累计收益和 Sharpe 跑赢等权全市场。",
       "baseline": "等权全市场",
-      "result": null,
+      "result": {"baseline": "+647.4% (SPY)", "baseline_sharpe": 0.855, "excess_pp": null, "max_dd": "-51.2%", "sample": "2011-07-01->2026-10-30", "sharpe": 0.234, "strategy": "+47.8% (spread, compounded)", "trades": 91},
       "priority": "medium",
       "tags": [
         "textual",
@@ -3229,7 +3229,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。第一腿完成，完整回测未做：LM Master Dictionary（2026-03更新）已从 sraf.nd.edu 词典页直下（9,093,460字节，86,553词，负面词2,345个）；EDGAR submissions API 畅通；MD&A抽取原型跑通3/3份10-K样本（坑：目录页Item 7先命中→取最长候选段；AAPL标题用&#160;实体→先unescape再匹配），AAPL 2024负面占比0.816%（17/2084词）、MSFT 2024 0.893%（65/7280词）、AAPL 2025 0.816%（20/2452词）。下一轮：定成分股时点规则与调仓日、批量抽取面板并统计失败率、再做五分位组合回测（旧win门+Sharpe>=1.2硬门槛）。产物：goals/idea-catalog/hidden_files/r5-loughran-mcdonald-filing-tone/。2026-11-01 Dow-cohort年度窄化版已测（非全市场季度版，通过也不算win）：Universe=Dow 30 as of 2011-01-01（Wikipedia历史变更表：2009-06-08名单至2012-09-24前无变动），事前剔除KFT/DD/UTX（公司行为映射复杂），余27家；每年6月30日前最近一份10-K的MD&A负面词占比（LM词典），7月首个交易日调仓，等权做多负面最少5家/做空负面最多5家，成本单边5bps，窗口2011-07-05→2026-10-30。面板：417份10-K抽取，261份有效语气（≥1000词），每年12-20家；CVX/XOM 0/16（MD&A以FS补充件呈现、无标准Item 7正文标题，排除不硬凑）、IBM 0/16、GE 4/16、PFE 2/16、JPM 6/16、VZ 6/16，早期年份另有展品引用期缺失（T/BAC/AXP/CAT 2011-2015前后），AA 2011-2016与DIS 2011-2019为CIK断点缺失（不混用前身CIK），MCD 2020-2026因抽取段<1000词排除；XOM的company_tickers映射曾指向无10-K的控股实体CIK 2115436，已改用申报主体CIK 34088验证。抽取器v1 longest规则在HD 2025挑错段后叫停，v2（标题感知结尾+结尾类型优先+组内最晚起点，子集安全）+1000词有效门为准，MSFT 2024精确复现7280词/65负面/0.893%，v3（引用从句过滤+组内最长）试验后否决（HD 2025挑中Business超集段22,538词/2.64%更差）。结果（Sharpe rf=0×√252，分割事前锁定筛选段2011-07-05→2023-10-03/留出段2023-10-04→2026-10-30）：筛选段策略0.367 vs 门1.230（SPY 0.730）不过，留出段-0.224 vs 门1.908（SPY 1.408）不过，全样本0.241 vs SPY 0.850，熊市段（56天）-1.374 < SPY -1.079 不过，非熊市段0.299 vs 0.987；累计（复利spread，仅报告）全样本+44.6% vs SPY +636.6%（筛选段+65.8% vs +296.3%，留出段-12.8% vs +85.9%），最大回撤-38.1% vs SPY -33.7%。另：仅39笔进腿交易（68次仓位变动），低于100笔下限，本身亦判blocked。实质：腿高度固化（做多常年MCD/MSFT/HD/HPQ/WMT/VZ，做空常年TRV/KO/BAC/JPM/BA），原始负面占比主要由公司/行业固定效应驱动（金融业MD&A结构性多负面词），raw五分位近似行业 bet。判决：窄化版失败，但不直接杀全市场季度版claim，仍in_progress；下一轮须做全市场季度版（交易数亦将随之达标），若同样失败则杀；行业中性版如要做应另立新条目，不作为本条的 rescue。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging/（PRE_REGISTER.md、panel.csv、backtest_results.json）。"
+      "notes": "1994–2024 延伸复现：MD&A-only 信号 t=-3.81 依然显著（全文信号 2009 后衰减）。数据：SEC EDGAR + LM 词典 + Yahoo/Stooq。与 r3-attention-reversal（散户注意力流量）不同：这是财报文本信息含量。第一腿完成，完整回测未做：LM Master Dictionary（2026-03更新）已从 sraf.nd.edu 词典页直下（9,093,460字节，86,553词，负面词2,345个）；EDGAR submissions API 畅通；MD&A抽取原型跑通3/3份10-K样本（坑：目录页Item 7先命中→取最长候选段；AAPL标题用&#160;实体→先unescape再匹配），AAPL 2024负面占比0.816%（17/2084词）、MSFT 2024 0.893%（65/7280词）、AAPL 2025 0.816%（20/2452词）。下一轮：定成分股时点规则与调仓日、批量抽取面板并统计失败率、再做五分位组合回测（旧win门+Sharpe>=1.2硬门槛）。产物：goals/idea-catalog/hidden_files/r5-loughran-mcdonald-filing-tone/。2026-11-01 Dow-cohort年度窄化版已测（非全市场季度版，通过也不算win）：Universe=Dow 30 as of 2011-01-01（Wikipedia历史变更表：2009-06-08名单至2012-09-24前无变动），事前剔除KFT/DD/UTX（公司行为映射复杂），余27家；每年6月30日前最近一份10-K的MD&A负面词占比（LM词典），7月首个交易日调仓，等权做多负面最少5家/做空负面最多5家，成本单边5bps，窗口2011-07-05→2026-10-30。面板：417份10-K抽取，261份有效语气（≥1000词），每年12-20家；CVX/XOM 0/16（MD&A以FS补充件呈现、无标准Item 7正文标题，排除不硬凑）、IBM 0/16、GE 4/16、PFE 2/16、JPM 6/16、VZ 6/16，早期年份另有展品引用期缺失（T/BAC/AXP/CAT 2011-2015前后），AA 2011-2016与DIS 2011-2019为CIK断点缺失（不混用前身CIK），MCD 2020-2026因抽取段<1000词排除；XOM的company_tickers映射曾指向无10-K的控股实体CIK 2115436，已改用申报主体CIK 34088验证。抽取器v1 longest规则在HD 2025挑错段后叫停，v2（标题感知结尾+结尾类型优先+组内最晚起点，子集安全）+1000词有效门为准，MSFT 2024精确复现7280词/65负面/0.893%，v3（引用从句过滤+组内最长）试验后否决（HD 2025挑中Business超集段22,538词/2.64%更差）。结果（Sharpe rf=0×√252，分割事前锁定筛选段2011-07-05→2023-10-03/留出段2023-10-04→2026-10-30）：筛选段策略0.367 vs 门1.230（SPY 0.730）不过，留出段-0.224 vs 门1.908（SPY 1.408）不过，全样本0.241 vs SPY 0.850，熊市段（56天）-1.374 < SPY -1.079 不过，非熊市段0.299 vs 0.987；累计（复利spread，仅报告）全样本+44.6% vs SPY +636.6%（筛选段+65.8% vs +296.3%，留出段-12.8% vs +85.9%），最大回撤-38.1% vs SPY -33.7%。另：仅39笔进腿交易（68次仓位变动），低于100笔下限，本身亦判blocked。实质：腿高度固化（做多常年MCD/MSFT/HD/HPQ/WMT/VZ，做空常年TRV/KO/BAC/JPM/BA），原始负面占比主要由公司/行业固定效应驱动（金融业MD&A结构性多负面词），raw五分位近似行业 bet。判决：窄化版失败，但不直接杀全市场季度版claim，仍in_progress；下一轮须做全市场季度版（交易数亦将随之达标），若同样失败则杀；行业中性版如要做应另立新条目，不作为本条的 rescue。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging/（PRE_REGISTER.md、panel.csv、backtest_results.json）2026-11-01 午间轮次季度版已测（killed，范围与张力见下）：52 只大盘截面（PCA 45 ∪ Dow 8）× 最新 10-K LM 负面语气 × 每季度首个交易日重排五分位多空（做多最低 20%/做空最高 20%，等权美元中性，单边 5bps）。Dow 面板复用凌晨轮次 v2 面板（261 份 ok）；新 26 只新抽 410 份 10-K（ok 365、short_mda 6、fail 39），合并 626 份有效语气；49 只 ticker 有语气，CVX/XOM/IBM/WFC 零有效语气缺席；62 次调仓 0 跳过，每季 33–43 只语气。筛选段（2011-07-01→2023-10-03）Sharpe 0.412 vs 门 1.237（SPY 0.737+0.5）不过，留出段（2023-10-04→2026-10-30）-0.611 vs 门 1.908（SPY 1.408+0.5）不过；熊市段（56 天）0.212 vs SPY -1.079 名义过，非熊市段 0.235 vs 0.993 不过。交易数张力：进腿仅 91 笔 <100，按字面规则应判 blocked；本判决写 killed 并明说理由（短缺内生于腿固化而非数据缺失——62 次调仓全执行、0 跳过；门差极大、留出段为负；上一轮约定季度版失败则杀），审阅者坚持交易数优先可改判 blocked。死因：腿高度固化（做空腿几乎每季都有 TRV/KO/BAC，做多腿常年 NFLX/CRM/AMZN），raw 负面占比主要由公司固定效应驱动，凌晨 Dow 年度版同一诊断在扩大截面后依然成立。杀的范围：大盘截面 × 10-K raw 语气 × 季度五分位这一实现及 Dow 年度版；字面全市场（Russell 级）× 10-Q 语气版未测（需数千份 10-Q 抽取），行业中性版应另立新条目、不作为本条 rescue。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/filing-tone-q/。。"
     },
     {
       "id": "r5-short-interest-crosssection",
@@ -3262,12 +3262,12 @@
       "source_name": "arxiv 2025（Form 4 研究）",
       "source_url": "https://arxiv.org/pdf/2602.06198",
       "aliases": [],
-      "date_added": "2026-09-25",
-      "status": "backlog",
-      "verdict": null,
+      "date_added": "2026-09-25", "date_updated": "2026-11-01",
+      "status": "killed",
+      "verdict": "fail",
       "claim": "14 天窗口内 ≥2 名独立内幕人公开市场买入的公司，买入后持有 60–120 日；累计收益和 Sharpe 跑赢等权小盘股。",
       "baseline": "IWM buy-hold",
-      "result": null,
+      "result": {"baseline": "+718.9% (SPY)", "baseline_sharpe": 0.635, "excess_pp": 411.9, "max_dd": "-54.9%", "sample": "2006-02-01->2026-05-05", "sharpe": 0.602, "strategy": "+1130.7%", "trades": 53781},
       "priority": "medium",
       "tags": [
         "insider",
@@ -3275,7 +3275,7 @@
         "equities"
       ],
       "note_url": null,
-      "notes": "数据：SEC EDGAR Form 4（免费，SOX 后 2 日内披露）。剔除期权行权。反方必读：30,000 filing 独立分析发现线性模型 R² 最高 1.4%、卖出无信息——信号只在\"聚集+价值型买入\"提纯版本里。"
+      "notes": "数据：SEC EDGAR Form 4（免费，SOX 后 2 日内披露）。剔除期权行权。反方必读：30,000 filing 独立分析发现线性模型 R² 最高 1.4%、卖出无信息——信号只在\"聚集+价值型买入\"提纯版本里2026-11-01 午间轮次已测（killed）：14 天窗口 ≥2 独立报告人且 ≥2 不同 accession、月末扫描、次交易日入场、持有 84 交易日、等权、单边 5bps，复用 r3 SEC Form 345 数据与价格（检测 30 发行人×240 扫描 0 误差）。筛选段（至 2022-04-08）Sharpe 0.668 vs 门 1.089（SPY 0.589+0.5）不过，留出段（2022-04-11 起）0.541 vs 门 1.345（SPY 0.845+0.5）不过；熊市段（573 天）-0.408 vs SPY -0.438 名义过（皆负，留出段内 37 个熊市日策略 -5.94 远差于 SPY -3.41）。联合申报仍抬高 headline（剔除后全样本超额 +847.8pp→+411.9pp），但 naive 对照（只去重报告人）同样双段不过（0.683/0.711），60/120 日持有期敏感性一致不过，故失败不依赖联合申报。IWM 参考：窗口内 IWM 累计 +405.7%、Sharpe 0.450，策略高于 IWM 但新规判决基准是 SPY。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/insider-r5/。。"
     },
     {
       "id": "r5-mortgage-homebuilder-rotation",
@@ -3331,9 +3331,9 @@
       "source_name": "Martineau 2022 vs 2025 复活之争",
       "source_url": "https://anderson-review.ucla.edu/is-post-earnings-announcement-drift-a-thing-again/",
       "aliases": [],
-      "date_added": "2026-09-25",
+      "date_added": "2026-09-25", "date_updated": "2026-11-01",
       "status": "backlog",
-      "verdict": null,
+      "verdict": "blocked",
       "claim": "微盘股 SUE 极端十分位，财报后持有 60 日；扣成本后超额存在且 Sharpe 跑赢等权微盘组合。",
       "baseline": "等权微盘组合",
       "result": null,
@@ -3344,7 +3344,83 @@
         "cross-sectional"
       ],
       "note_url": null,
-      "notes": "P4 争议条目：强制前置证伪——第一步在可交易微盘 universe 上复现 Martineau vs 2025 论文分歧（是否含微盘股+如何度量），扣除 5bps 后超额不存在则直接杀。与目录\"公告日溢价\"不同（漂移 vs 当日），不算重叠。"
+      "notes": "P4 争议条目：强制前置证伪——第一步在可交易微盘 universe 上复现 Martineau vs 2025 论文分歧（是否含微盘股+如何度量），扣除 5bps 后超额不存在则直接杀。与目录\"公告日溢价\"不同（漂移 vs 当日），不算重叠2026-11-01 午间轮次数据 gate 未过（blocked，未回测）：SUE 需付费 IBES 一致预期+离散度时点 vintage（EDGAR 仅有实际 EPS，算不出 SUE；随机游走代理是另一信号，不得代测；价格型 EAR 代理属循环定义，不得主测）；公告日无免费带盘前/盘后时刻的时点面板（8-K 申报日 ≠ 发布日）；微盘时点成分需 NYSE 市值断点历史（现名单回测属后视选股）；免费价格缺 CRSP 退市收益（微盘退市为一阶成分）。文献分歧（UCLA 2026-01-21）：Martineau 2022 称非微盘 PEAD 2006 后消失；2025 复活两篇均未剔微盘；Subrahmanyam 2025 复现含微盘 t=2.18、剔微盘 t=1.43——先验指向复活表象由微盘驱动，但不得直接当作本条 killed 证据，仍需自己的 IBES SUE 回测。重试路径：WRDS（IBES+CRSP）到位后按预注册主规格执行（极端十分位多空、60 交易日、5bps、80/20 留出、熊市段、门 max(0.6, SPY Sharpe+0.5)）并附价差敏感性。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/pead-microcap/（PRE_REGISTER.md、DATA_FEASIBILITY.md、RESULT.md）。。"
+    },
+    {
+      "id": "r6-sector-xsmom-top3",
+      "title": "行业截面动量 top3（月频）",
+      "kind": "strategy",
+      "source": "self",
+      "source_name": "自研（新点子 hunting）",
+      "source_url": "",
+      "aliases": [],
+      "date_added": "2026-11-01", "date_updated": "2026-11-01",
+      "status": "killed",
+      "verdict": "fail",
+      "claim": "每月末按过去 6 个月收益选 9 只行业 ETF 中 top3 等权持有；累计与 Sharpe 跑赢 SPY buy-and-hold。",
+      "baseline": "SPY buy-hold",
+      "result": {"baseline": "+787.17%", "baseline_sharpe": 0.607, "excess_pp": -52.57, "max_dd": "-44.46%", "sample": "1999-07->2026-10", "sharpe": 0.608, "strategy": "+734.60%", "trades": 1268},
+      "priority": null,
+      "tags": [],
+      "note_url": null,
+      "notes": "2026-11-01 新点子实测（killed）：筛选段（1999-07→2021-04）Sharpe 0.624 vs 门 1.038（SPY 0.538+0.5）不过，留出段（2021-05→2026-10）0.539 vs 门 1.377（SPY 0.877+0.5）不过，熊市段（81 月）0.094 vs SPY 0.090 勉强过；全窗口 Sharpe 0.608 vs 0.607 仅持平。Yahoo 复权价，单边 5bps。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/new-ideas/01-sector-xsmom-top3/。"
+    },
+    {
+      "id": "r6-sector-equal-weight",
+      "title": "行业等权组合（月频再平衡）",
+      "kind": "strategy",
+      "source": "self",
+      "source_name": "自研（新点子 hunting）",
+      "source_url": "",
+      "aliases": [],
+      "date_added": "2026-11-01", "date_updated": "2026-11-01",
+      "status": "killed",
+      "verdict": "fail",
+      "claim": "每月等权持有 9 只行业 ETF、月末再平衡；累计与 Sharpe 跑赢 SPY buy-and-hold。",
+      "baseline": "SPY buy-hold",
+      "result": {"baseline": "+787.17%", "baseline_sharpe": 0.607, "excess_pp": 127.04, "max_dd": "-49.14%", "sample": "1999-07->2026-10", "sharpe": 0.655, "strategy": "+914.21%", "trades": 2952},
+      "priority": null,
+      "tags": [],
+      "note_url": null,
+      "notes": "2026-11-01 新点子实测（killed）：筛选段 Sharpe 0.594 vs 门 1.038 不过，留出段 0.908 vs 门 1.377 不过，熊市段 0.153 vs SPY 0.090 过；全窗口累计跑赢（+914.21% vs +787.17%）但两段门均不过，按新规仍判 fail，不放水；最大回撤与 SPY 基本相同，无回撤保护。Yahoo 复权价，单边 5bps。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/new-ideas/02-sector-equal-weight/。"
+    },
+    {
+      "id": "r6-spy-tlt-relmom",
+      "title": "股债相对动量（月频、始终满仓）",
+      "kind": "strategy",
+      "source": "self",
+      "source_name": "自研（新点子 hunting）",
+      "source_url": "",
+      "aliases": [],
+      "date_added": "2026-11-01", "date_updated": "2026-11-01",
+      "status": "backlog",
+      "verdict": "blocked",
+      "claim": "每月末按过去 12 个月收益在 SPY/TLT 间选胜者满仓持有；累计与 Sharpe 跑赢 SPY buy-and-hold。",
+"baseline": "SPY buy-hold",
+      "result": {"baseline": "+1061.15%", "baseline_sharpe": 0.806, "excess_pp": -617.89, "max_dd": "-27.50%", "sample": "2003-08->2026-10", "sharpe": 0.611, "strategy": "+443.26%", "trades": 61},
+      "priority": null,
+      "tags": [],
+      "note_url": null,
+      "notes": "2026-11-01 新点子实测（blocked）：23 年仅 30 次切换（61 腿）<100 笔下限，点估计不作定论。点估计照常报告：筛选段 Sharpe 0.518 vs 门 1.271 不过，留出段 0.926 vs 门 1.426 不过（留出段 56 个月未换仓，数字与 SPY 完全相同），熊市段 0.171 vs SPY 0.243 不过；回撤保护真实（-27.50% vs -50.78%）但复利代价更大，与 GEM 同方向。Yahoo 复权价，单边 5bps。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/new-ideas/03-spy-tlt-relmom/。"
+    },
+    {
+      "id": "r6-tom-spy",
+      "title": "月末转折效应 TOM（日频，仅持 4 天/月）",
+      "kind": "strategy",
+      "source": "self",
+      "source_name": "自研（新点子 hunting，Lakonishok-Smidt 1988）",
+      "source_url": "",
+      "aliases": [],
+      "date_added": "2026-11-01", "date_updated": "2026-11-01",
+      "status": "killed",
+      "verdict": "fail",
+      "claim": "每月最后一个交易日 + 次月前 3 个交易日持有 SPY，其余现金；累计与 Sharpe 跑赢 SPY buy-and-hold。",
+      "baseline": "SPY buy-hold",
+      "result": {"baseline": "+3041.83%", "baseline_sharpe": 0.645, "excess_pp": -2926.3, "max_dd": "-19.27%", "sample": "1993-02-01->2026-10-30", "sharpe": 0.328, "strategy": "+115.53%", "trades": 811},
+      "priority": null,
+      "tags": [],
+      "note_url": null,
+      "notes": "2026-11-01 新点子实测（killed）：筛选段（1993→2020-01-27）Sharpe 0.311 vs 门 1.103 不过，留出段（2020-01-28→2026-10-30）0.397 vs 门 1.299 不过，熊市段（1428 天）0.119 vs SPY -0.238 过；在场 19.07%，4 天溢价真实但装不满一年，81% 时间现金拖累致死（成本不是主因，差距 2926pp 远大于约 40pp 成本拖累），与 r3-taxloss / r3-bond—monthend 同族。Yahoo 复权价，单边 5bps。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/new-ideas/04-tom-spy/。"
     }
   ]
 }
