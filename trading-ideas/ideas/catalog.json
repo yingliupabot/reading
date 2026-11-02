@@ -3421,8 +3421,7 @@
       "tags": [],
       "note_url": null,
       "notes": "2026-11-01 新点子实测（killed）：筛选段（1993→2020-01-27）Sharpe 0.311 vs 门 1.103 不过，留出段（2020-01-28→2026-10-30）0.397 vs 门 1.299 不过，熊市段（1428 天）0.119 vs SPY -0.238 过；在场 19.07%，4 天溢价真实但装不满一年，81% 时间现金拖累致死（成本不是主因，差距 2926pp 远大于约 40pp 成本拖累），与 r3-taxloss / r3-bond—monthend 同族。Yahoo 复权价，单边 5bps。产物：goals/idea-catalog/hidden_files/2026-11-01-daily-digging-1100/new-ideas/04-tom-spy/。"
-    }
-  ],
+    },
     {
       "id": "r7-gtaa-absolute-momentum",
       "title": "GTAA 绝对动量（Faber Ivy，10 月均线）",
