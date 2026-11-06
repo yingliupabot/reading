@@ -10,7 +10,7 @@
 <style>
 :root, :root[data-theme="dark"] { --neutral-bg: rgba(139, 148, 158, 0.28); }
 :root[data-theme="light"] { --neutral-bg: rgba(89, 99, 110, 0.20); }
-/* 这一页的表有 10 列：版心从全站的 1120px 放宽到 1840px，顶栏跟着对齐，窄屏照旧横滑 */
+/* 这一页的表有 11 列：版心从全站的 1120px 放宽到 1840px，顶栏跟着对齐，窄屏照旧横滑 */
 .layout, .nav-inner { max-width: 1840px; }
 .table-scroll { overflow-x: auto; margin-top: 14px; border: 1px solid var(--border); border-radius: 10px; }
 table.ideas { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 1180px; } /* 笔记列钉在右侧：横滑时也看得见，不用一路拖到底 */ table.ideas th:last-child, table.ideas td:last-child { position: sticky; right: 0; } table.ideas tbody td:last-child { box-shadow: -12px 0 16px -12px rgba(0,0,0,.45); }
@@ -165,15 +165,15 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
     <div class="table-scroll">
       <table class="ideas">
         <thead>
-          <tr><th>点子</th><th>加入</th><th>最后更新</th><th>来源</th><th>类型</th><th>状态</th><th>结论</th><th>谁杀的 · 死因</th><th>Sharpe（策略/基准）</th><th>笔记</th></tr>
+          <tr><th>点子</th><th>加入</th><th>最后更新</th><th>来源</th><th>类型</th><th>状态</th><th>结论</th><th>谁杀的 · 死因</th><th>Sharpe（策略/基准）</th><th>回测窗口</th><th>笔记</th></tr>
         </thead>
         <tbody id="idea-body">
-          <tr><td colspan="10" style="color:var(--muted)">加载中…</td></tr>
+          <tr><td colspan="11" style="color:var(--muted)">加载中…</td></tr>
         </tbody>
       </table>
     </div>
     <p id="lyra-error" class="load-error" hidden>lyra-killed.json 没加载出来：这次表里没有 lyra 杀的点子。</p>
-    <p id="no-result" class="no-result" hidden>没有匹配的点子，换个关键词试试。</p> <p class="rule-box">口径统一：Sharpe = 平均收益 / 收益标准差 × √年化周期，rf=0，策略与基准同口径；绿色=策略 Sharpe ≥ 基准，粉色=低于基准。win 门槛仍是累计超额 ≥10pp 且 Sharpe 同时跑赢（历史规则）。<br>
+    <p id="no-result" class="no-result" hidden>没有匹配的点子，换个关键词试试。</p> <p class="rule-box">口径统一：Sharpe = 平均收益 / 收益标准差 × √年化周期，rf=0，策略与基准同口径；绿色=策略 Sharpe ≥ 基准，粉色=低于基准。现行合规门（2026-10-31 起）：策略 Sharpe ≥ 同期 SPY buy-and-hold Sharpe + 0.5 且绝对值 > 0.6，筛选段（前 80%）与留出段（后 20%）两段都过，熊市段不低于同期 SPY 熊市段；累计/超额只报告、不作过关条件。表中已发布的 win 是按历史规则（累计超额 ≥10pp 且 Sharpe 同时跑赢）定的。<br>
       最后更新：这一行最后一次变动的日期。取 catalog.json 的 <code>date_updated</code>，没有就是加入日期；lyra 杀的点子取 lyra-killed.json 里它的 <code>date_updated</code>，两个都有取较晚的。表按它从新到旧排。<br>
       谁杀的：<b>trading-ideas</b> 是这个仓库自己的回测和收录门杀的，死因是备注的第一句，全文在「备注 / 死因」里；<b>lyra</b> 是私有仓库 lyra 用自己的数据测过后杀的，粗体是死因，旁边是它测过的变体数，点「证据」看死因的解释和 lyra 的一句英文证据，都来自 lyra-killed.json。</p>
 
@@ -298,11 +298,11 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
         '<td><span class="pill ' + st[1] + '">' + st[0] + "</span></td>" +
         (v ? '<td><span class="pill ' + v[1] + '">' + v[0] + "</span></td>" : '<td><span class="num-na">—</span></td>') +
         '<td class="kill-cell">' + killerCell(it) + "</td>" +
-        "<td>" + sharpe + "</td>" +
+        "<td>" + sharpe + "</td>" + '<td class="idea-date">' + esc((it.result && it.result.sample) || "—") + "</td>" +
         "<td>" + noteLink + "</td>" +
         "</tr>";
     }).join("");
-    body.innerHTML = html || '<tr><td colspan="10" style="color:var(--muted)">暂无</td></tr>';
+    body.innerHTML = html || '<tr><td colspan="11" style="color:var(--muted)">暂无</td></tr>';
     document.getElementById("no-result").hidden = n > 0;
   }
 
@@ -350,7 +350,7 @@ table.ideas tbody tr:hover td { filter: brightness(0.97); }
     stats();
     render();
   }).catch(function () {
-    document.getElementById("idea-body").innerHTML = '<tr><td colspan="10" style="color:var(--muted)">catalog.json 加载失败</td></tr>';
+    document.getElementById("idea-body").innerHTML = '<tr><td colspan="11" style="color:var(--muted)">catalog.json 加载失败</td></tr>';
   });
 })();
 </script>
