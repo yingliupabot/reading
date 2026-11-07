@@ -31,25 +31,28 @@
   <main class="content">
     <div class="top">
       <h1>Setup：每日阅读设置</h1>
-      <p class="sub">每天按下面四个兴趣类别找文章，挑出值得读的放进 <a href="index.html">读 Blog</a> 的待读清单。</p>
+      <p class="sub">每天按下面五个兴趣类别找文章，挑出值得读的放进 <a href="index.html">读 Blog</a> 的待读清单。</p>
     </div>
-    <h2>四个兴趣类别</h2>
+    <h2>五个兴趣类别</h2>
     <ul>
       <li>GitHub 交易 / AI 短剧热门</li>
       <li>GitHub 其他热门</li>
       <li>YouTube 教育</li>
       <li>炒股 Podcast / 教育</li>
+      <li>论文（trading / finance / AI 方向）</li>
     </ul>
     <h2>每天怎么找文章</h2>
     <ol>
       <li>打开每个类别的来源，浏览当天的热门内容。</li>
+      <li>论文从 arXiv、SSRN 等找，只看 trading / finance / AI 方向的好论文。</li>
       <li>把标题、来源和类别记下来，先放进待读清单，不必当天全部读完。</li>
       <li>去掉重复、过时或与类别无关的内容，保持清单简短可用。</li>
     </ol>
     <h2>每日挑选规则</h2>
     <ul>
-      <li>每天最多 4 篇，四个分类各 1 篇，找不到好内容就不凑数。</li><li>每个类别都要覆盖，不只看最熟悉的一个类别。</li>
+      <li>每天最多 5 篇，五个分类各 1 篇，找不到好内容就不凑数。</li><li>每个类别都要覆盖，不只看最熟悉的一个类别。</li>
       <li>炒股 Podcast / 教育：播客、教育类内容和观点类文章；短快讯不记，观点类新闻可以记</li>
+      <li>论文：只读 trading / finance / AI 方向的好论文，读方法、数据、结论和可复现性，带明确可回测规则的按交易类处理，先进点子库 backlog 查重再决定是否回测，方法论/综述类只留作读 Blog 笔记。</li>
       <li>优先选信息新、有来源、可验证的内容，避免标题党和重复转载。</li>
       <li>读完后从待读清单中移除，新的热门内容再补进来。</li>
       <li>清单保持按类别整理，方便每天按类别挑着读。</li>
@@ -59,7 +62,7 @@
     <ul>
       <li>卡片的 <code>&lt;article&gt;</code> 加 <code>data-found-by="&lt;id&gt;"</code>；<code>class="meta"</code> 那一行末尾加「 · 发现：&lt;名字&gt;」。</li>
       <li><code>reading-daily</code> · 读 Blog 每日：本仓库每天按上面规则挑读的 agent。</li>
-      <li><code>vault-weekly</code> · Knowledge Vault 每周：vibecoding 仓库 Knowledge Vault 的每周扫描，额外找「意外之喜」写进来。它写的卡片也算已读，不占每天 4 篇的名额。</li>
+      <li><code>vault-weekly</code> · Knowledge Vault 每周：vibecoding 仓库 Knowledge Vault 的每周扫描，额外找「意外之喜」写进来。它写的卡片也算已读，不占每天 5 篇的名额。</li>
       <li>别的 agent 写的卡片不要删、不要改 provenance；重复了就保留先写的那张。</li>
     </ul>
     <p><a href="index.html">← 回到读 Blog</a></p>
