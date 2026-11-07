@@ -50,19 +50,53 @@
     </ol>
     <h2>每日挑选规则</h2>
     <ul>
-      <li>每天最多 5 篇，五个分类各 1 篇，找不到好内容就不凑数。</li><li>每个类别都要覆盖，不只看最熟悉的一个类别。</li>
+      <li>每天最多 7 篇：五个分类各 1 篇，加 1 条意外之喜（短格式），再加 1 条机动（当天最好的一篇，不限类别，够格才加，不够格就空着）。找不到好内容就不凑数。</li><li>每个类别都要覆盖，不只看最熟悉的一个类别。</li>
       <li>炒股 Podcast / 教育：播客、教育类内容和观点类文章；短快讯不记，观点类新闻可以记</li>
       <li>论文：只读 trading / finance / AI 方向的好论文，读方法、数据、结论和可复现性，带明确可回测规则的按交易类处理，先进点子库 backlog 查重再决定是否回测，方法论/综述类只留作读 Blog 笔记。</li>
       <li>优先选信息新、有来源、可验证的内容，避免标题党和重复转载。</li>
       <li>读完后从待读清单中移除，新的热门内容再补进来。</li>
       <li>清单保持按类别整理，方便每天按类别挑着读。</li>
     </ul>
+        <h2>讨论当渠道</h2>
+    <p>Reddit、X、Hacker News 是找料的渠道，不是第 6 类；挑到的好讨论记进对应那类的笔记里，附讨论链接和“大家争论的点是什么”。</p>
+    <ul>
+      <li>Reddit 版块：r/algotrading、r/quant、r/QuantFinance、r/options、r/SecurityAnalysis、r/ValueInvesting，以及 AI / 短剧相关的 r/MachineLearning、r/LocalLLaMA、r/StableDiffusion 类版块；只挑带数据、带回测、带代码或长篇讨论的帖子，meme 和纯情绪的不记。</li>
+      <li>X：财经博主、量化研究员、AI 实验室和模型发布者，选有实质内容或观点的，不选纯情绪帖；打不开就直说打不开，不编内容。</li>
+      <li>Hacker News：每天前页 + Show HN。</li>
+    </ul>
+    <h2>意外之喜</h2>
+    <p>每天再找 1 条，不占 5 类名额，短格式：原文链接 / 一句话是什么 / 为什么对她有用，一两行就够。</p>
+    <ul>
+      <li>标准是她想不到要去搜、但一眼看到就觉得非常 make sense 的东西，必须和她的兴趣有关（trading / finance / AI / AI 短剧，或把它们桥接起来的工具）。</li>
+      <li>找不到真正够格的就空着、不凑数。</li>
+    </ul>
+    <h2>去重机制</h2>
+    <p>唯一真相源是线上现版：读blog/index.html（已读清单）、线上 catalog.json、lyra-killed.json。本地副本、旧截图、记忆里的清单都不算数，动手前必须重读线上现版。</p>
+    <ul>
+      <li>每轮动手前先读线上现版全文列出已读清单，再读往轮笔记；候选标题或链接有一处相同（标题相近也算）就直接跳过，不写笔记、不上站。</li>
+      <li>交易类候选先到线上 catalog.json 和 lyra-killed.json 查标题/规则，命中就跳过或只记“已在库里”。</li>
+      <li>每轮简报末尾附本轮跳过的重复候选。</li>
+    </ul>
+    <h2>实时性</h2>
+    <ul>
+      <li>优先今天和本周的东西：新闻/讨论类优先 24–48 小时内的，GitHub 热门和论文优先本周新出的，YouTube / 播客优先最近一周的。</li>
+      <li>每篇笔记必须写明原始发布/发表日期，没有日期的写“日期未注明”，不猜日期。</li>
+      <li>超过一周的旧内容除非是经典重读（注明“经典重读”并说明为什么现在值得重读），否则不挑。</li>
+      <li>实时数据只报核实过的最新状态，并写明数据来源和时间，不用过期数字。</li>
+    </ul>
+    <h2>多 agent 协作</h2>
+    <ul>
+      <li>动手前读线上 main 分支最新提交、记下 commit hash，提交前再核一次，远端动了就重读现版、再做外科式修改，绝不拿旧版覆盖。</li>
+      <li>一次提交只改一个文件，只改要改的那几行；提交信息写清日期和改了什么。</li>
+      <li>每轮开始前先看线上读 Blog 页今天日期那一节是否已经存在，如果已经存在只补缺的类别，绝不重复加已经在位的那几篇。</li>
+      <li>绝不 local git push，只走 yingliupabot 专用账号网页端。</li>
+    </ul>
     <h2>Provenance：谁找的</h2>
     <p>读 Blog 是所有信息的统一入口，不止一个 agent 往里写。每张卡片都要标明是哪个 agent 找到的，方便比较谁找得更好。</p>
     <ul>
       <li>卡片的 <code>&lt;article&gt;</code> 加 <code>data-found-by="&lt;id&gt;"</code>；<code>class="meta"</code> 那一行末尾加「 · 发现：&lt;名字&gt;」。</li>
       <li><code>reading-daily</code> · 读 Blog 每日：本仓库每天按上面规则挑读的 agent。</li>
-      <li><code>vault-weekly</code> · Knowledge Vault 每周：vibecoding 仓库 Knowledge Vault 的每周扫描，额外找「意外之喜」写进来。它写的卡片也算已读，不占每天 5 篇的名额。</li>
+      <li><code>vault-weekly</code> · Knowledge Vault 每周：vibecoding 仓库 Knowledge Vault 的每周扫描，额外找「意外之喜」写进来。它写的卡片也算已读，不占每天 7 篇的名额。</li>
       <li>别的 agent 写的卡片不要删、不要改 provenance；重复了就保留先写的那张。</li>
     </ul>
     <p><a href="index.html">← 回到读 Blog</a></p>
