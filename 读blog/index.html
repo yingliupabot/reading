@@ -54,12 +54,30 @@
 <h1>读 Blog</h1>
 <p class="sub">每日阅读记录：精选值得一读的文章与视频，详见 <a href="setup.html">Setup</a>。</p>
 <section class="cat-grid">
-<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 4 篇</p></article>
-<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 5 篇</p></article>
+<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 5 篇</p></article>
+<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 6 篇</p></article>
 <article class="cat-card"><span class="cat-icon">▶️</span><h2>YouTube 教育</h2><p>已读 3 篇</p></article>
 <article class="cat-card"><span class="cat-icon">📰</span><h2>炒股 Podcast / 教育</h2><p>已读 3 篇</p></article>
-  <article class="cat-card"><span class="cat-icon">📄</span><h2>论文</h2><p>已读 1 篇</p></article>
+  <article class="cat-card"><span class="cat-icon">📄</span><h2>论文</h2><p>已读 2 篇</p></article>
   
+</section>
+<section>
+<h2>已读笔记 · 2026-11-08</h2>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/adam-s/car-diagnosis" target="_blank" rel="noopener">adam-s/car-diagnosis</a></h3>
+<p>用手机录一段车的异响，它告诉你「有没有毛病、大概在车的哪个部位、最可能是哪几个零件」，听不出来就老实说 UNCERTAIN。训练数据是从 YouTube / TikTok 上扒来的故障声视频：先把人声、音乐、路噪剥掉，只留机械声，再用冻结的 CLAP 模型做嵌入、训几个小线性头。最意外的是它的诚实：README 自己说手机录音就是这个上限，还把样本外不过关的「爆震」头公开降级。</p>
+<p class="meta">来源：GitHub · 296 stars · MIT · 创建于 2026-06-29 · 最近提交 2026-07-05 · 按视频分组交叉验证（1,031 组）故障判断 AUROC 0.79、部位 top-3 约 75%，为作者自报，不可直接采信 · 判断：「从网上嘈杂视频里洗出干净信号 + 校准过的不确定」这套配方可借到别的数据上，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">论文</span>
+<h3><a href="https://arxiv.org/abs/2508.18653" target="_blank" rel="noopener">The Sound of Risk: A Multimodal Physics-Informed Acoustic Model for Forecasting Market Volatility</a></h3>
+<p>不读财报电话会的文字，去「听」高管的嗓子：用非线性声学模型从 1,795 场电话会（约 1,800 小时）的原始音频里提取紧张、稳定、激动三维情绪，看高管从念稿切到现场问答那一刻声音怎么变。结论反直觉：嗓音预测不了涨跌，却能解释最多 43.8% 的样本外 30 天已实现波动率；CFO 声音变不稳、CEO 激动程度起伏大，都是信号。</p>
+<p class="meta">来源：arXiv 2508.18653 · 2025-08-26 · Xiaoliang Chen 等 11 人 · 43.8% 为摘要所述，摘要页未见代码或数据链接 · 判断：方向（方向不可测、波动可测）对期权卖方有意思，但没有公开数据和可回测规则，只留作读 Blog 笔记 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/Leonxlnx/earshot" target="_blank" rel="noopener">Leonxlnx/earshot</a></h3>
+<p>给编程 agent 装上耳朵：纯 CPU 跑的 CLI / MCP，能用文字描述一段声音、在长录音里找到最匹配的那几秒并给出剪切时间、判断一段音效是真录的还是代码合成的，还能给一部视频出「听觉时间线」和带时间戳的改进建议。也能自己用代码合成音效、内置 252 个现成音效。AI 短剧管线里一直缺「能听」的那一环，它补上了。</p>
+<p class="meta">来源：GitHub · 4,182 stars · MIT · 创建于 2026-10-15 · 最近提交 2026-11-06 · README 自己承认 v1 合成音效盲测 15 次只猜对 8 次（接近瞎猜），听不了品味和台词内容 · 判断：AI 短剧配音效、审片可直接试，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
 </section>
 <section>
 <h2>已读笔记 · 2026-11-07</h2>
