@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读 Blog · Reading</title>
+<script>(function(){var t;try{t=localStorage.getItem('ti-theme');}catch(e){}if(!t)t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.setAttribute('data-theme',t);})();</script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<style>
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:16px 0 24px}
+.cat-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:14px}
+.cat-card h2{font-size:15px;margin:8px 0 4px}
+.cat-card p{color:var(--muted);margin:0;font-size:13px}
+.cat-icon{font-size:20px}
+.article-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+.article-card h3{margin:8px 0 6px}
+.article-card p{margin:6px 0}
+.tag-pill{display:inline-block;background:var(--accent-soft);color:var(--accent);border:1px solid var(--border);border-radius:999px;padding:2px 10px;font-size:12px}
+.article-card .meta{color:var(--muted);font-size:13px;margin:8px 0 0}
+@media(max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="nav-inner">
+<button class="icon-btn hamburger" id="sidebar-toggle" aria-label="打开目录">☰</button>
+<a class="brand" href="../index.html"><span class="logo-dot">📈</span><span class="brand-text">Reading</span></a>
+<div class="nav-links">
+<a href="../index.html">首页</a>
+<a href="../trading-ideas/">Trading Ideas</a>
+<a href="index.html" class="active">读 Blog</a>
+<a href="../notes.html">读书笔记</a>
+<a href="../世界地图/" target="_blank" rel="noopener">世界地图</a>
+</div>
+<div class="nav-actions">
+<button class="icon-btn" id="theme-toggle" aria-label="切换深色/浅色" title="切换深色/浅色">切换深色/浅色</button>
+<a class="icon-btn" href="https://github.com/yingliupabot/reading" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库">GitHub 仓库</a>
+</div>
+</div>
+</nav>
+<div class="scrim" id="scrim"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+<h4>入口</h4>
+<a href="../index.html">🏠 首页</a>
+<a href="../trading-ideas/">📈 Trading Ideas</a>
+<a href="index.html">📖 读 Blog</a>
+<a href="../notes.html">📚 读书笔记</a>
+<a href="../世界地图/" target="_blank" rel="noopener">🗺 世界地图</a>
+</aside>
+<main class="content">
+<h1>读 Blog</h1>
+<p class="sub">每日阅读记录：精选值得一读的文章与视频，详见 <a href="setup.html">Setup</a>。</p>
+<section class="cat-grid">
+<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 8 篇</p></article>
+<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 7 篇</p></article>
+<article class="cat-card"><span class="cat-icon">▶️</span><h2>YouTube 教育</h2><p>已读 5 篇</p></article>
+<article class="cat-card"><span class="cat-icon">📰</span><h2>炒股 Podcast / 教育</h2><p>已读 5 篇</p></article>
+  <article class="cat-card"><span class="cat-icon">📄</span><h2>论文</h2><p>已读 3 篇</p></article>
+  
+</section>
+<section>
+<h2>已读笔记 · 2026-11-09</h2>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+    <h3><a href="https://github.com/TauricResearch/TradingAgents" target="_blank" rel="noopener">TauricResearch/TradingAgents</a></h3>
+    <p>12 万星的多智能体 LLM 交易框架 11 月两件新事：Trading-R1 v0.1.0 开放 early access；v0.7.0 起不用 API key、直接走 ChatGPT Plus / Pro 订阅跑（登录一次，额度计入订阅）。v0.7.1 还修了 point-in-time 漏洞：决策只按最终收盘价结算，模型读不到跑单日之后才发布的 filing。</p>
+    <p class="meta">来源：GitHub · 121,519 stars / 23,263 forks · Apache-2.0 · 创建于 2024-12-28 · Trading-R1 v0.1.0（2026-11）· 判断：研究框架，不是策略，不进点子库；论文高回报来自 2024 年初 3 个月回测，样本极薄 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">GitHub 其他热门</span>
+    <h3><a href="https://github.com/JuneYaooo/rea-video" target="_blank" rel="noopener">JuneYaooo/rea-video</a></h3>
+    <p>给它一段视频，逐镜头判断是实拍、AI 生成还是代码做的，再给出每个镜头的复刻方案：拍什么、生成什么、用什么代码写。AI 短剧、AI MV、头像口播、3D、动效字都能拆；原文件上纯工具离线准确率 99.6%（holdout），平台重压缩视频要加 vision 模型才回得来。</p>
+    <p class="meta">来源：GitHub · 5,306 stars / 764 forks · Apache-2.0 · 创建于 2026-10-29 · 判断：AI 短剧“拆片”工具，可直接拿参考片拆逐镜头 prompt；只给复刻方案、不直接渲染成片 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">YouTube 教育</span>
+    <h3><a href="https://www.youtube.com/watch?v=5tQb8HBw1i8" target="_blank" rel="noopener">How Many Trades Do You Need Before a Backtest Means Anything? (Part 5)</a></h3>
+    <p>一个 36 笔交易、profit factor 1.23 的策略，纯抛硬币也有 31% 的概率跑出同样数字；100 笔 14%、400 笔 2%、1,600 笔基本为 0。Bootstrap 给期望上 95% 区间：跨零就是“没证据有 edge”，全在零下才是“可能为负”；Monte Carlo 要分清打乱顺序（只验顺序运气）和有放回重抽（才验 edge）。</p>
+    <p class="meta">来源：YouTube · quantstackdev《Backtest Report Explained》第 5/6 集 · 约 2026-11-02 · 全文 transcript 已读 · 判断：方法论教育视频，不是策略，不进点子库；“100 笔分水岭”与点子库“交易数 &lt;100 blocked”是同一条线 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">炒股 Podcast / 教育</span>
+    <h3><a href="https://allfeeds.ai/podcast/bvck7z38vk" target="_blank" rel="noopener">SMOT 204: AI Stocks Under Pressure: Finding Opportunities in SPX</a></h3>
+    <p>AI 股挨打、利率压顶、SPX 横着走没趋势——这期不猜方向，改看 SPX gamma 敞口、call/put 墙和负 gamma，再用短久期 0DTE 信用价差 + Alpha Crunching 的 TSE v2 筛盘中机会，12:30–1:00 PM ET 这个时段的历史结果有意思。</p>
+    <p class="meta">来源：Podcast · Stock Market Options Trading，Eric O'Rourke · 2026-11-02 · 13 分 40 秒 · 判断：观点/教育类，TSE v2 是作者自家工具、无完整可复现规则，不进点子库；12:30–1:00 窗口记作以后挖掘候选 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">论文</span>
+    <h3><a href="https://arxiv.org/abs/2611.06607" target="_blank" rel="noopener">Hard to Fool: A Bounded LLM Research Loop for Quantitative Finance</a></h3>
+    <p>让 LLM 提假设、只让可信代码裁决的研究循环：模型只许交声明式 JSON（无模型写的代码），评估分 discovery / validation / 只能开一次的 holdout，过关是六条门全过。二十多个战役大多死了；最漂亮的“发现”是失败：QQQ 0DTE 规则发现段 Sharpe 2.94、验证段 3.34，一次性 holdout 跌到 0.26。活下来的两条之一：场外成交占比（FINRA）预测未来 1/5/20 天更低收益，2021 年以来每年成立。</p>
+    <p class="meta">来源：arXiv 2611.06607 · 2026-11-04 · Henry Zhang · 判断：方法论论文，QQQ 那条在作者 holdout 上已死、不进；场外成交量信号点子库查重无命中，可作以后挖掘候选，论文没给完整规则、不直接进回测队列 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">GitHub 其他热门</span>
+    <h3><a href="https://github.com/storytold/craft-anything" target="_blank" rel="noopener">storytold/craft-anything</a></h3>
+    <p>纯 Rust 的“干净房间”引擎：指着一个网站、App、游戏或文件，用 320 个工具（反汇编、反编译、抓包、解码）先把原软件怎么工作的拆明白，再让 coding agent 照着做一个自己的版本，做完逐项比对、列出还差在哪。9 天 23,700 stars，本周 GitHub 涨得最快的项目之一。</p>
+    <p class="meta">来源：GitHub · 约 23,700 stars · MIT / Apache-2.0 · 创建于 2026-10-31 · README 自认 early alpha、多家复核提醒只有 Claude Code 的 builder 路径真跑通过 · 判断：rea 的“软件版”，拆实现、学做法的工具，不是交易内容，不是点子库 · 发现：读 Blog 每日 · 意外之喜</p></article>
+</section>
+<section>
+<h2>已读笔记 · 2026-11-08</h2>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/adam-s/car-diagnosis" target="_blank" rel="noopener">adam-s/car-diagnosis</a></h3>
+<p>用手机录一段车的异响，它告诉你「有没有毛病、大概在车的哪个部位、最可能是哪几个零件」，听不出来就老实说 UNCERTAIN。训练数据是从 YouTube / TikTok 上扒来的故障声视频：先把人声、音乐、路噪剥掉，只留机械声，再用冻结的 CLAP 模型做嵌入、训几个小线性头。最意外的是它的诚实：README 自己说手机录音就是这个上限，还把样本外不过关的「爆震」头公开降级。</p>
+<p class="meta">来源：GitHub · 296 stars · MIT · 创建于 2026-06-29 · 最近提交 2026-07-05 · 按视频分组交叉验证（1,031 组）故障判断 AUROC 0.79、部位 top-3 约 75%，为作者自报，不可直接采信 · 判断：「从网上嘈杂视频里洗出干净信号 + 校准过的不确定」这套配方可借到别的数据上，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">论文</span>
+<h3><a href="https://arxiv.org/abs/2508.18653" target="_blank" rel="noopener">The Sound of Risk: A Multimodal Physics-Informed Acoustic Model for Forecasting Market Volatility</a></h3>
+<p>不读财报电话会的文字，去「听」高管的嗓子：用非线性声学模型从 1,795 场电话会（约 1,800 小时）的原始音频里提取紧张、稳定、激动三维情绪，看高管从念稿切到现场问答那一刻声音怎么变。结论反直觉：嗓音预测不了涨跌，却能解释最多 43.8% 的样本外 30 天已实现波动率；CFO 声音变不稳、CEO 激动程度起伏大，都是信号。</p>
+<p class="meta">来源：arXiv 2508.18653 · 2025-08-26 · Xiaoliang Chen 等 11 人 · 43.8% 为摘要所述，摘要页未见代码或数据链接 · 判断：方向（方向不可测、波动可测）对期权卖方有意思，但没有公开数据和可回测规则，只留作读 Blog 笔记 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/Leonxlnx/earshot" target="_blank" rel="noopener">Leonxlnx/earshot</a></h3>
+<p>给编程 agent 装上耳朵：纯 CPU 跑的 CLI / MCP，能用文字描述一段声音、在长录音里找到最匹配的那几秒并给出剪切时间、判断一段音效是真录的还是代码合成的，还能给一部视频出「听觉时间线」和带时间戳的改进建议。也能自己用代码合成音效、内置 252 个现成音效。AI 短剧管线里一直缺「能听」的那一环，它补上了。</p>
+<p class="meta">来源：GitHub · 4,182 stars · MIT · 创建于 2026-10-15 · 最近提交 2026-11-06 · README 自己承认 v1 合成音效盲测 15 次只猜对 8 次（接近瞎猜），听不了品味和台词内容 · 判断：AI 短剧配音效、审片可直接试，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">YouTube 教育</span>
+    <h3><a href="https://www.youtube.com/watch?v=zRZL2g18j9o" target="_blank" rel="noopener">Trade With Me at 3: 0DTE Options Strategy Live Into Election Week</a></h3>
+    <p>大选周的 1DTE「Time Warp Batman」实盘：SPX 上下各一只 30 点宽 butterfly，中心放在预期波动处——call fly 7595/7625/7655 两张 $3.65，put fly 7455/7485/7515 两张 $2.55，合计 $6.20（一对），目标次日 $11–12 卖出。核心理念：不为大选恐惧停手，波动是朋友；这套打法解的是风险调整后收益、不是胜率。</p>
+    <p class="meta">来源：YouTube · @0dte / FatTail Labs，Ernie Varitimos · 2026-11-03 · 全文 transcript 已读（11:48）· 当期那笔交易的结局不在本期视频里（只到成交）；上期 10 月 31 日同款收赢（$5.55 进、$7.75–$12 出，作者自述）· 判断：结构完整，可作 0DTE 预期波动打法的教学样本；97–98% 蒙特卡洛数字是作者自述、未独立验证，不进点子库 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">炒股 Podcast / 教育</span>
+    <h3><a href="https://www.youtube.com/watch?v=qOATFmRUinQ" target="_blank" rel="noopener">TIP859: Mercado Libre ($MELI): We Doubled Down on Meli</a></h3>
+    <p>拉美亚马逊再访：连续 31 个季度营收增速超 30%，Q3 营收 +45% 至 $107.5 亿，但经营利润率跌到 6.3% 的多年低点；Mercado Pago 上季处理 $1,090 亿支付、信贷账本 $179 亿（+62%/年，已是巴西第六大发卡行），新卡获客成本前置记账是利润率下滑的主因。财报后股价 11 月 5 日跌 12% 至 $1,530.28，两人反而把组合权重从 5% 加到 7%，成第五大持仓，赌巴西终局像美国（一两家主导）而非中国（四家杀到 2% 利润率）。</p>
+    <p class="meta">来源：Podcast · The Investor's Podcast (We Study Billionaires)，2026-11-08 · 1 小时 4 分 · 判断：观点/教育类，记飞轮（电商+支付+信贷+物流+广告）与「美国式终局 vs 中国式终局」的估值框架；无可回测规则，不是点子库 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+    <h3><a href="https://github.com/Jakeschincariol/day-trader-skill" target="_blank" rel="noopener">Jakeschincariol/day-trader-skill</a></h3>
+    <p>11 个 Claude skills 组成的日内交易工作流：扫几千张图找 setup、盯突发新闻、按分钟计时进场、进场前定好止损和目标，最特别的是 Time Machine——下单前把这笔交易重播 1 万次再告诉你真实胜算。免费 MIT、无需 API key，纸交易默认，不亲口说 yes 绝不下单。</p>
+    <p class="meta">来源：GitHub · 6,118 stars / 1,511 forks · MIT · 创建于 2026-10-20 · 作者自带 TSLA 例子：Time Machine 判「接近抛硬币」· 判断：AI agent × 日内交易的桥接工具，不是策略、不进点子库；Time Machine 的诚实口径值得学 · 发现：读 Blog 每日 · 意外之喜</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+    <h3><a href="https://testednottrusted.substack.com/p/trend-rules-on-stocks-a-seatbelt" target="_blank" rel="noopener">Trend rules on stocks: a seatbelt, not an engine</a></h3>
+    <p>200 日均线法则和 6 个月动量，放在 AMD、苹果、微软、谷歌等 9 只股票/基金上、按 5bp 成本、和「直接持有」硬碰硬：最差回撤 9 只里 8 只被砍小（GE 从 −85% 到 −42%、标普从 −55% 到 −29%），但收益率只赢了 1 只（AMD），微软一年少赚近 8%。结论：趋势法则是安全带、不是发动机——保命，不赚钱。</p>
+    <p class="meta">来源：Substack 博客 testednottrusted · 2026-11-02 · 规则完整、调参期/测试期分开、无调参 · 判断：200 日均线家族点子库里已有 killed（金叉、GTAA 绝对动量等），不重复进回测队列；价值在「先和买入持有比 Sharpe」的诚实口径 · 发现：读 Blog 每日 · 机动</p></article>
+</section>
+<section>
+<h2>已读笔记 · 2026-11-07</h2>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/bennyjo/phil" target="_blank" rel="noopener">bennyjo/phil</a></h3>
+<p>让 Claude Code 拿模拟 $1,000 在 Polymarket 短期市场（财报、体育、经济数据）下注，每笔结算后自己改策略、改风控、改筛选提示词并 commit——策略的 git log 就是产品。意外之处在评估口径：不看 P&amp;L 看 brier_delta（自己的概率是否比市场价格更准），仓库里的日志也老实记下研究并没稳定跑赢市场价。</p>
+<p class="meta">来源：GitHub · 248 stars · Apache-2.0 · 最近提交 2026-11-07 · brier_delta 等数字为作者自有纸面交易记录，不可直接采信 · 判断：自我改进型交易 agent 的范本，借鉴它的「日志即策略 + 校准评分」框架，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/HeyChengC/wallstreet-explainer" target="_blank" rel="noopener">HeyChengC/wallstreet-explainer</a></h3>
+<p>一个 Claude Code skill：给选题，自己写文案、去视频网站找素材、截新闻刷黄关键句、配音、抠人、渲染出「华尔街风格」财经解读短片（金色大数字、深蓝底、镜头一直在走），示例有《打仗了，黄金为什么反而跌》。把炒股和 AI 短视频两条兴趣线接在了一起。</p>
+<p class="meta">来源：GitHub · 618 stars · MIT · 创建于 2026-10-18 · 最近提交 2026-11-05 · 判断：AI 短片管线可直接拿来试，注意素材版权（作者自己附了 CREDITS） · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/bilawalsidhu/gods-eye-view" target="_blank" rel="noopener">bilawalsidhu/gods-eye-view</a></h3>
+<p>浏览器里的「间谍卫星模拟器」，但数据全是真的：照片级 3D 地球上叠实时航班、船舶 AIS、卫星轨道、地震、山火、公开摄像头和气象雷达，还能用语音让 AI 数一数某片海域的船。比只看海峡更大的一张「全球态势」底图，免 API key 就能跑。</p>
+<p class="meta">来源：GitHub · 63,228 stars · MIT · 创建于 2026-06-22 · 最近提交 2026-11-06 · 2026-08 登顶 GitHub Trending（README 自述）· 判断：可视化 + 数据源清单（DATA_SOURCES.md）很值钱，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/wheresryan22/anatomy" target="_blank" rel="noopener">wheresryan22/anatomy</a></h3>
+<p>一个让 Claude「把概念造成一台机器」的 skill：缓存命中变成只有每根锁销都对齐才转得动的弹子锁，再用几十个带阴影的小零件拼成可交互的等距插图（SVG / WebGL / 3D），还会自己放大检查每个关节。解释金融或 AI 概念的新姿势。</p>
+<p class="meta">来源：GitHub · 25,568 stars · MIT · 创建于 2026-10-08 · 最近提交 2026-10-18 · 判断：做讲解图、Reading 站配图可直接用，不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">Oldcircle/geo-sleuth</a></h3>
+<p>给 agent 一张没有 GPS、没有文字、没有地标的照片，它用 OpenStreetMap 几何、标高数据算天际线、卫星图和街景一步步缩小范围：README 里一张田埂 + 高架桥的照片，从 27,335 段铁路桥筛到误差 ±2 m。每个结论必须指向它跑过的命令和产出文件。</p>
+<p class="meta">来源：GitHub · 6,306 stars · MIT · 创建于 2026-09-18 · 最近提交 2026-11-05 · 定位精度为作者单次运行记录，不可直接采信 · 判断：「推理过程可审计」的 agent skill 写法值得学，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">论文</span>
+<h3><a href="https://arxiv.org/abs/2604.23166" target="_blank" rel="noopener">A satellite foundation model for improved wealth monitoring</a></h3>
+<p>Stanford 团队（Ermon、Burke、Lobell 等 8 人）用 300 万对 Landsat 前后对比图自监督预训练卫星基础模型 Tempov，再用少量入户调查微调，就能画非洲高分辨率财富地图，还能零样本「现在预测」到标签之后十年、回溯过去。从太空直接读出一个地区变富还是变穷。</p>
+<p class="meta">来源：arXiv 2604.23166 · 2026-04-25 · 摘要称全非洲统一模型 R² = 0.63、仅用 10% 调查样本即有竞争力；代码是否开源页面上未确认 · 判断：方法论论文，无可回测规则，只留作读 Blog 笔记；另类数据思路可存 · 发现：Knowledge Vault 意外之喜</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">YouTube 教育</span>
+    <h3><a href="https://www.youtube.com/watch?v=AEtIiao_a74" target="_blank" rel="noopener">This Rule Won 64.6% of Its Trades. It Made 1.4% a Year.</a></h3>
+    <p>一条买跌规则（50 只大盘股，3 日 RSI 跌破 5 就买、收回 5 日均线上方就卖）在 2022–2026 样本外赢了 64.6% 的交易，却只赚了 1.4%/年，同期 SPY 是 11.9%/年——胜率不是 edge，平均赢亏、在场资金占比和样本外基准才是。</p>
+    <p class="meta">来源：YouTube · Trade Gains 频道 · 约 2026-11-02 · 全文 transcript 已读 · 样本外 178 笔、Sharpe 0.49，同期 SPY 0.74；数字为作者自有回测，不可直接采信 · 判断：规则完整，但与点子库已杀的 Connors RSI-2 同族，不重复进回测队列；教育价值在「胜率≠期望」的三数检查法 · 发现：读 Blog 每日</p></article>
+  <article class="article-card" data-found-by="reading-daily">
+    <span class="tag-pill">炒股 Podcast / 教育</span>
+  <h3><a href="https://www.youtube.com/watch?v=vNdzGZ7H0Ps" target="_blank" rel="noopener">TIP857: S&amp;P Global, Novo, Deckers Brands</a></h3>
+  <p>Mastermind 三人轮流推票：Novo 按 12 倍远期市盈率、4.5% 股息讲肥胖药的错杀；Stig 一年多来第一次新开仓，400 美元以下买 S&amp;P Global，赌评级寡头不怕 AI；Tobias 推 Deckers，11 倍市盈率、16 亿美元净现金、回购吃掉 80% 自由现金流。</p>
+  <p class="meta">来源：Podcast · The Investor's Podcast (We Study Billionaires)，2026-11-01 · 1 小时 27 分 · 判断：观点/教育类，记三只票的估值框架与观察清单；无可回测规则，不是点子库 · 发现：读 Blog 每日</p></article>
+</section>
+<section>
+<h2>已读笔记 · 2026-11-06</h2>
+<article class="article-card" data-found-by="reading-daily">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/nautechsystems/nautilus_trader" target="_blank" rel="noopener">NautilusTrader</a></h3>
+<p>生产级 Rust 交易引擎，Python 写策略，同一份代码可跑回测与实盘，但它本身不是策略。</p>
+<p class="meta">来源：GitHub · 31,289 stars / 4,222 forks · LGPL-3.0 · 2026-11-06 · 判断：基础设施，不是点子库 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">GitHub 其他热门</span><h3><a href="https://github.com/morluto/rea" target="_blank" rel="noopener">morluto/rea</a></h3><p>一个 MCP 服务器，让 AI 智能体无需源码即可逆向工程软件，并给出带证据与局限的结论。</p><p class="meta">来源：GitHub · 435,910 stars / 108,138 forks · MIT · 创建于 2026-04-14 · 判断：智能体工具，值得了解；不是交易内容，不是点子库 · 注意：星标增速极快 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">YouTube 教育</span><h3><a href="https://www.youtube.com/watch?v=aq1dw5E5MBE" target="_blank" rel="noopener">Is This Curve Fitting? Capturing Nasdaq Reversals | 2022 vs. 2026</a></h3><p>NQ 日内动量反转策略，仅改两条规则（每天最多 1 笔，14:30 ET 后不开新仓），回测净利润约 $117,000 升至 $201,840，最大回撤约 $46,000 降至约 $19,000，胜率 37.63%。</p><p class="meta">来源：YouTube · Capstone Trading Systems，David Bean · 判断：规则完整，进点子库 backlog（待查重）；数字为作者自有回测，不可直接采信 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">炒股 Podcast / 教育</span><h3><a href="https://www.morningstar.com/podcasts/the-morning-filter/3-stocks-sell-3-stocks-buy-november-2" target="_blank" rel="noopener">3 Stocks to Sell and 3 Stocks to Buy for November</a></h3><p>AI 抛售的关键在于 AI 支出何时回本，而非财报不佳；卖出 VLO 与 HOOD，减持 JNJ，买入 AMAT、SARO 与 CCI。</p><p class="meta">来源：Morningstar · The Morning Filter，2026-11-02 · AMAT 4★（折价 25%）、SARO 5★（折价 45%）、CCI 4★（折价 22%，股息率 4.8%）· 判断：观点文章，记录估值框架与观察名单；无可回测规则，不是点子库 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">GitHub 交易 / AI 短剧热门</span><h3><a href="https://github.com/QuantJourneyOrg/quantjourney-bt" target="_blank" rel="noopener">QuantJourney Backtester</a></h3><p>开源 Python 回测框架，50 条可直接跑的策略（动量、均值回归、配对、风险平价、多空、日内、期货、外汇），带 walk-forward 与 Optuna 优化、80+ 指标，与 VectorBT / Backtrader / Zipline / bt / LEAN 做了五策略横向对比。</p><p class="meta">来源：GitHub · 约 600 stars / 240+ forks · Apache-2.0 · 2026-11-04 发布 · 判断：框架不是单条策略，不直接进点子库；50 条策略库可作后续挖掘来源 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">GitHub 其他热门</span><h3><a href="https://github.com/thedotmack/claude-mem" target="_blank" rel="noopener">thedotmack/claude-mem</a></h3><p>给 Claude Code 等智能体加跨会话长期记忆：自动记录工具调用、AI 压缩摘要，下次会话再注入，支持 Claude Code / OpenClaw / Codex / Gemini 等，本周 trending 第一。</p><p class="meta">来源：GitHub · 113,862 stars / 9,878 forks · Apache-2.0 · 创建于 2025-08-31 · 判断：智能体工具，不是交易内容，不是点子库 · 注意：默认走托管记忆服务，有 30 天免费试用 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">YouTube 教育</span><h3><a href="https://www.youtube.com/watch?v=JYdQ-BZppzw" target="_blank" rel="noopener">How We Pick an Options Spread in 2 Minutes at 3:00 PM</a></h3><p>板块 ETF 看涨价差规则：价差成本 ÷ 宽度 ≤ 43¢ 才做，16:00 前限价进场，+40% GTC 止盈或第 10 天离场；10 月 19 日以来 8 笔全胜（平均 +47.5%），样本极小。</p><p class="meta">来源：YouTube · Find Better Trades · 判断：规则完整（进场/出场/仓位），进点子库 backlog（待查重）；样本仅 8 笔、3 周，不可直接采信；视频带 First Batch 引流 · 发现：读 Blog 每日</p></article><article class="article-card" data-found-by="reading-daily"><span class="tag-pill">炒股 Podcast / 教育</span><h3><a href="https://open.spotify.com/episode/6XxDdPwZDL4Dlqj13lNJDq" target="_blank" rel="noopener">TIP858: McDonald's ($MCD): Generational Compounder in Historical Drawdown</a></h3><p>麦当劳本质是房东：约 46,000 家店、95% 加盟，去年收租约 $104 亿 + 特许费约 $60 亿，门店利润约 91% 来自租金与特许费；聊 GLP-1 风险、85 亿美元门店改造计划与估值，决定是否进 Intrinsic Value Portfolio。</p><p class="meta">来源：Podcast · The Investor's Podcast (We Study Billionaires)，2026-11-05 · 1 小时 22 分 · 判断：观点/教育类，记商业模式与估值框架；无可回测规则，不是点子库 · 发现：读 Blog 每日</p></article></section>
+<footer>Reading · 内容仅作学习交流，不构成投资建议</footer>
+</main>
+</div>
+<script src="../theme.js"></script>
+</body>
+</html>
