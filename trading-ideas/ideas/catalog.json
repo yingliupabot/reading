@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-09-25",
+ "updated": "2026-11-09",
  "readme": "点子挖掘机的真相源。加新点子前先全文搜索本文件：已存在的点子直接跳过，不存在的才新增。status: backlog=待扒 in_progress=扒取中(一次只允许一个) published=已发布笔记 killed=已测/已放弃(留死因)。verdict: win=跑赢baseline fail=没跑赢 inconclusive= inconclusive null=资料型无回测。",
  "ideas": [
   {
@@ -4773,6 +4773,260 @@
    ],
    "title": "TQQQ/QQQ 200 日均线不对称带宽切换（+4%/-3%）",
    "verdict": "blocked"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-52wh-gh",
+   "title": "52 周高点邻近度截面动量（George & Hwang 2004，6 个月持有重叠组合）",
+   "source": "paper",
+   "source_name": "George & Hwang (2004) JF \"The 52-Week High and Momentum Investing\"",
+   "source_url": "https://doi.org/10.1111/j.1540-6261.2004.00695.x",
+   "claim": "每月末按收盘价/52 周最高收盘价排序，做多最高十分位、做空最低十分位，持有 6 个月、skip 1 个月、重叠组合；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "momentum",
+    "cross-section",
+    "52-week-high"
+   ],
+   "result": {
+    "sample": "2007-03->2026-10",
+    "strategy": "-92.55%",
+    "baseline": "+668.65%",
+    "excess_pp": -761.2,
+    "sharpe": -0.594,
+    "baseline_sharpe": 0.754,
+    "trades": 42368,
+    "max_dd": "-93.26%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。筛选段 Sharpe -0.573 vs 门 1.109（SPY 0.609+0.5）不过，差 1.682；留出段 -0.679 vs 门 1.976（SPY 1.476+0.5）不过，差 2.655；熊市段 -0.964 vs SPY -0.438 不过；全窗口 Sharpe -0.594 vs SPY 0.754，累计 -92.55% vs SPY +668.65%，最大回撤 -93.26% vs SPY -50.78%。月频，236 个月（持有月 2007-03→2026-10），42368 腿，238 个形成 cohort。Universe：2026-11-08 时点 S&P 500 成分 503 只（Yahoo 日价；现时成分，survivorship bias 明示）。死因：信号在本 universe/窗口内反向——远离 52 周高点的空头腿大幅跑赢贴近高点的多头腿；翻过来做即买入暴跌股均值回归，收敛到已杀反转族（r5-pca-residual-reversal 等），放弃抢救。与 lyra conditional-reversal-turnover-52w-high（Chen-Stivers-Sun 2024，以换手率与 52 周高点为条件做反转/动量）不同：本条是无条件邻近度排序；与 r9-spy-52wh（单资产 SPY 择时）不同：本条是截面多空。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_52wh.py、results_52wh.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-weekend-eth-v6",
+   "title": "ETH 周末季节性（CacheCarti weekend_season_eth_v6，周五晚入场）",
+   "source": "github",
+   "source_name": "CacheCarti/Crypto-Strategies《I tested 748 crypto trading strategies》（dev.to 2026-11-03）",
+   "source_url": "https://github.com/CacheCarti/Crypto-Strategies/blob/main/strategies/weekend_season_eth_v6.py",
+   "claim": "周五 17:00–23:00 UTC 入场做多 ETH（价格 ≥ EMA55×0.985、RSI 38–72），周日 20:00 UTC/周一 03:00 前出场，止损 450bps/止盈 750bps、最长 48 小时；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "crypto",
+    "seasonality",
+    "weekend"
+   ],
+   "result": {
+    "sample": "2017-08->2026-10",
+    "strategy": "+55.38%",
+    "baseline": "+252.99%",
+    "excess_pp": -197.61,
+    "sharpe": 0.352,
+    "baseline_sharpe": 0.832,
+    "trades": 962,
+    "max_dd": "-42.95%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。481 笔（962 腿）。筛选段 Sharpe 0.799 vs 门 1.321（SPY 0.821+0.5）不过，差 0.522；留出段 -1.728 vs 门 1.387（SPY 0.887+0.5）不过，差 3.115；熊市段 -3.011 vs SPY -1.079 不过；全窗口 Sharpe 0.352 vs SPY 0.832，累计 +55.38% vs SPY +252.99%，最大回撤 -42.95% vs SPY -33.72%。5 分钟 bar（Binance ETHUSDT，2017-08-17→2026-10-31，966,793 根；2026-11 月度文件未发布、REST API 451，故窗口截至 10-31；2025-01 起档案时间戳由毫秒改微秒，已对齐；33 处小缺口合计约 0.4%）。出场结构：430 笔（89%）由周六/周日 5 分钟 RSI>76 提前止盈触发，止损 45 笔、止盈 6 笔，周日计划出场与 48 小时上限从未触发——按代码实现它几乎从不持有整个周末，“周末季节性”叙事不成立。偏离明示：作者 domain 为 ETHUSDC，本轮用 ETHUSDT 代理；作者的 regime/crisis_score 过滤为 pipeline 内部定义、无法复现，已去掉（偏保守方向）。作者自报 strict02 重筛 OOS 仅 6 笔（Sharpe 1.12，+325bps），本轮全历史重算为准。死因：留出段周末溢价消失并反转；放弃抢救（改出场规则属于事后钓鱼）。独立复核：全新独立脚本（不 import lib）重算，筛选/留出/熊市/全窗口 Sharpe、累计、笔数全部对上（小数点后四位）。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_eth.py、results_eth.json、recheck_eth.py、eth5m.pkl）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-tom-day1",
+   "title": "每月首日持有 SPY（Turn-of-the-Month day +1 单日版）",
+   "source": "blog",
+   "source_name": "RipBacktest《Turn-of-the-Month Effect SPY》（2026-11-04）",
+   "source_url": "https://ripbacktest.com/posts/turn-of-the-month-effect-spy/",
+   "claim": "只在每月第一个交易日持有 SPY（前一交易日收盘买入、当日收盘卖出），其余时间现金；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "calendar",
+    "turn-of-the-month"
+   ],
+   "result": {
+    "sample": "2006-01->2026-10",
+    "strategy": "+3.35%",
+    "baseline": "+770.79%",
+    "excess_pp": -767.44,
+    "sharpe": 0.058,
+    "baseline_sharpe": 0.639,
+    "trades": 500,
+    "max_dd": "-12.86%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。250 笔（500 腿）。筛选段 Sharpe 0.097 vs 门 1.048（SPY 0.548+0.5）不过，差 0.951；留出段 -0.201 vs 门 1.607（SPY 1.107+0.5）不过；熊市段 -0.235 vs SPY -0.438 过（基本空仓所致）；全窗口 Sharpe 0.058 vs SPY 0.639，累计 +3.35% vs SPY +770.79%，最大回撤 -12.86% vs SPY -55.19%。日频，5240 天。死因：源文 1993–2026 窗口的 +0.219%/日首日溢价在 2006–2026 窗口内基本消失；每月只持仓 1 天、其余现金，收益质量不可能过 0.6 绝对门。诚实标注：day +1 是事后从分日表挑出的最强子集（母规则 4 日窗口已被作者判 buried），预注册已锁死只测 day +1、不测 4 日窗口。无抢救（加持有日即回到已被判死刑的 4 日窗口）。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_tom.py、results_tom.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-sector-intramonth",
+   "title": "板块月内动量三段拼接（Quantpedia，9 只行业 ETF）",
+   "source": "blog",
+   "source_name": "Quantpedia《Sectoral Intramonth Momentum Cycle》（2026-08；Nathan, Suominen & Tasa 2026）",
+   "source_url": "https://quantpedia.com/sectoral-intramonth-momentum-cycle/",
+   "claim": "每月末按 252 日回报排行业 ETF，top-3 多/bottom-3 空；D-10 至 D-5 持动量方向、D+1 持动量方向、D+2/D+3 翻转；其余时间现金；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "sector",
+    "momentum",
+    "calendar"
+   ],
+   "result": {
+    "sample": "2007-01->2026-10",
+    "strategy": "+58.59%",
+    "baseline": "+664.91%",
+    "excess_pp": -606.32,
+    "sharpe": 0.282,
+    "baseline_sharpe": 0.624,
+    "trades": 8604,
+    "max_dd": "-24.58%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。8604 腿，1904 个持仓日（717 个事件）。筛选段 Sharpe 0.428 vs 门 1.002（SPY 0.502+0.5）不过，差 0.575；留出段 -0.429 vs 门 1.800（SPY 1.300+0.5）不过，差 2.229；熊市段 1.004 vs SPY -0.438 过；全窗口 Sharpe 0.282 vs SPY 0.624，累计 +58.59% vs SPY +664.91%，最大回撤 -24.58% vs SPY -55.19%。日频，4989 天。D-10 腿按字面执行（D-10 收盘进、D-5 收盘出，捕获 D-9..D-5 共 5 日，与直方图 D-10..D-5 的 1 日歧义已明示）；D-10 腿用上月末排名、D+1/D+2 腿用当月末新排名，无前视。死因：原文自报复合 Sharpe 仅 0.55，已低于有效门；本轮窗口内筛选段仅 0.428、留出段转负，三段拼接未挽回。放弃抢救（改腿权重/窗口属于事后钓鱼）。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_sector.py、results_sector.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-30d-high",
+   "title": "30 日高点接近度多空截面（5 日持有）",
+   "source": "blog",
+   "source_name": "AlphaPilot《30-Day High Proximity Long/Short》（2026-11-01）",
+   "source_url": "https://www.alphapilot.tech/playbooks/30-day-high-proximity-long-short-144-as-the-market-fell-75-a62b3b",
+   "claim": "每 5 日按收盘价/30 日最高收盘价排序，做多最高 20%、做空最低 20%，持有 5 日；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "momentum",
+    "cross-section",
+    "52-week-high"
+   ],
+   "result": {
+    "sample": "2006-03->2026-10",
+    "strategy": "-97.44%",
+    "baseline": "+760.40%",
+    "excess_pp": -857.84,
+    "sharpe": -0.871,
+    "baseline_sharpe": 0.639,
+    "trades": 157114,
+    "max_dd": "-97.61%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。157114 腿。筛选段 Sharpe -0.836 vs 门 1.041（SPY 0.541+0.5）不过，差 1.878；留出段 -1.011 vs 门 1.642（SPY 1.142+0.5）不过，差 2.654；熊市段 -0.923 vs SPY -0.438 不过；全窗口 Sharpe -0.871 vs SPY 0.639，累计 -97.44% vs SPY +760.40%，最大回撤 -97.61% vs SPY -55.19%。日频，5201 天。Universe：2026-11-08 时点 S&P 500 成分（现时成分，survivorship bias 明示）。偏离明示：原文为 close/max(high,30)（日内最高价），本轮 panel 只有收盘价，以最高收盘价近似。死因：与 B2（52 周高点邻近度）同构反向——远离 30 日高点的空头腿大幅跑赢多头腿；原文 2025 年 +144% 是永续合约 universe 的个例，不迁移到美股大盘截面；翻过来做即均值回归，收敛到已杀反转族，放弃抢救。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_30dhigh.py、results_30dhigh.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-p3a-sol-1h",
+   "title": "P3A Completed Trend Long v3（SOL 1 小时趋势多头）",
+   "source": "tradingview",
+   "source_name": "TradingView P3A Completed Trend Long v3 + Medium walkthrough（2026-10-20）",
+   "source_url": "https://www.tradingview.com/script/BkxccpXa-P3A-Completed-Trend-Long-v3/",
+   "claim": "1 小时图：日收 > 日 EMA(20) 且开盘 > EMA(100)、开盘 > EMA(20) 且 EMA(20) 上升时，看涨 K 线向上穿越 ATR(14)×2 跟踪线即入场（次根开盘），止损 2.5×ATR、目标 2R；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "crypto",
+    "trend",
+    "intraday"
+   ],
+   "result": {
+    "sample": "2020-08->2026-10",
+    "strategy": "+271.33%",
+    "baseline": "+145.15%",
+    "excess_pp": 126.18,
+    "sharpe": 0.701,
+    "baseline_sharpe": 0.952,
+    "trades": 342,
+    "max_dd": "-43.14%"
+   },
+   "notes": "2026-11-09 新点子实测（killed）。171 笔（342 腿）。筛选段 Sharpe 0.801 vs 门 1.395（SPY 0.895+0.5）不过，差 0.594；留出段 -0.029 vs 门 1.822（SPY 1.322+0.5）不过，差 1.851；熊市段 -2.610 vs SPY -3.363 过（仅 37 天，两者皆深负）；全窗口 Sharpe 0.701 vs SPY 0.952，累计 +271.33% vs SPY +145.15%，最大回撤 -43.14% vs SPY -24.50%。1 小时 bar（Binance SOLUSDT，54,527 根，2020-08-11→2026-10-31）。出场：止损 101 笔、止盈 70 笔，胜率 40.9%，均笔 +1.07%。死因：全窗口累计跑赢但 Sharpe 不够——收益集中在筛选段（2020–2025），留出段（2025-07→2026-10）归零；与已杀 sweep-ut-bot 同族（UT 线触发器），标的/周期/过滤不同仍未过门。放弃抢救（15 分钟图、加做空侧均属事后换实现）。作者自报 3 年 104 笔基本打平（+76.95 USDT/10000 本金），本轮全历史重算为准。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_sol.py、results_sol.json、sol1h.pkl）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r13-short-letf-pair",
+   "title": "做空 TQQQ+SQQQ 对收波动率衰减（日再平衡）",
+   "source": "blog",
+   "source_name": "Quantpedia《Shorting Leveraged ETFs》（2026-10-23）",
+   "source_url": "https://quantpedia.com/shorting-leveraged-etfs-the-role-of-borrowing-costs-and-rebalancing-in-volatility-decay-strategies/",
+   "claim": "每日收盘再平衡至 −50% TQQQ / −50% SQQQ 做空，收 3× 日重置波动率衰减；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "leveraged-etf",
+    "volatility-decay",
+    "short"
+   ],
+   "result": {
+    "sample": "2010-02->2026-10",
+    "strategy": "-19.22%",
+    "baseline": "+839.59%",
+    "excess_pp": -858.81,
+    "sharpe": -1.105,
+    "baseline_sharpe": 0.875,
+    "trades": 8410,
+    "max_dd": "-19.78%"
+   },
+   "notes": "2026-11-09 新点子实测（killed，主判定档借券费 2%/年）。8410 腿。筛选段 Sharpe -0.402 vs 门 1.290（SPY 0.790+0.5）不过；留出段 -6.875 vs 门 1.781（SPY 1.281+0.5）不过；熊市段 3.927 vs SPY -1.079 过；全窗口 Sharpe -1.105 vs SPY 0.875，累计 -19.22% vs SPY +839.59%，最大回撤 -19.78% vs SPY -33.72%。日频，4206 天。敏感性：0% 费版筛选段 1.053 vs 门 1.290（差 0.237，本轮最接近的筛选段）、留出段 -3.817、全窗口 Sharpe 0.561、累计 +10.18%；5% 费版全窗口 Sharpe -4.067、累计 -63.34%。借券费序列为 QuantConnect 专有未公开，本轮按年化费率对空头名义每日计提（0%/2%/5% 三档），判定以 2% 档为准；权益与空头名义分开跟踪，再平衡成本按实际换手扣单边 5bps。死因：衰减 edge 只在筛选段（2010–2023）存在，2023–2026 趋势牛市里杠杆 ETF 趋势收益压过衰减、留出段转负；借券费再砍一刀。周频/分档再平衡变体原文自报 Sharpe 0.11–0.49（低于日频含费版 0.41），不构成抢救。原文含费版 Sharpe 0.41 亦低于绝对门 0.6，结论一致。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md、backtest_letf.py、results_letf.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-09",
+   "date_updated": "2026-11-09",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": "medium",
+   "id": "r13-noise-area-nq",
+   "title": "NQ 纽约时段噪声区突破（Zarattini et al. 2024）",
+   "source": "paper",
+   "source_name": "RipBacktest 独立复测《Intraday Momentum Strategy Papers》（2026-10-18；原论文 Zarattini, Aziz & Barbon 2024）",
+   "source_url": "https://ripbacktest.com/posts/intraday-momentum-strategy-papers/",
+   "claim": "NQ 期货纽约时段：过去 14 天同分钟均价偏离带，收盘价向上突破带上沿做多、向下突破做空，每 30 分钟复核，跟踪退出至噪声带或 VWAP，日内平仓。",
+   "status": "backlog",
+   "verdict": "blocked",
+   "result": null,
+   "tags": [
+    "intraday",
+    "futures",
+    "momentum"
+   ],
+   "notes": "2026-11-09 hunting 候选（GitHub/TV 路首选），未测，数据门 blocked，记 backlog。复测证据（对方数字，非我方回测）：纽约时段双向 1504 笔，扣成本后 +$231,557/张、+$153.96/笔，验证期 profit factor 1.33，开发期 t 统计 2.82，2020–2026 每年都赚钱，去掉最好 10 笔仍赚 +$107,255；同一规则在 ES、黄金、BTC 及 NQ 亚盘/伦敦盘全部失败。Blocked 原因：需 2020→2026 NQ 连续合约 1 分钟数据，免费源不可得——historicalfuturesdata 全历史 $59 一次性（免费仅最近一个月 + 部分日线）；Kaggle tzamrik 免费集（2022-12→2025-12，正规时段 1 分钟，284,310 行）需账号且窗口仅 3 年、熊市覆盖边缘（2022 熊市主体在窗口外，靠 VIX ≥30 事件补压力覆盖）。重试路径：拿到 1 分钟 NQ 数据后按预注册主规格测（只测 NQ 纽约时段 09:30–16:00 ET，不得事后混入 ES/黄金/BTC 的失败版本翻案）。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md）。"
   }
  ]
 }
