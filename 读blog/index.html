@@ -54,12 +54,25 @@
 <h1>读 Blog</h1>
 <p class="sub">每日阅读记录：精选值得一读的文章与视频，详见 <a href="setup.html">Setup</a>。</p>
 <section class="cat-grid">
-<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 8 篇</p></article>
-<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 7 篇</p></article>
+<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 9 篇</p></article>
+<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 8 篇</p></article>
 <article class="cat-card"><span class="cat-icon">▶️</span><h2>YouTube 教育</h2><p>已读 5 篇</p></article>
 <article class="cat-card"><span class="cat-icon">📰</span><h2>炒股 Podcast / 教育</h2><p>已读 5 篇</p></article>
   <article class="cat-card"><span class="cat-icon">📄</span><h2>论文</h2><p>已读 3 篇</p></article>
   
+</section>
+<section>
+<h2>已读笔记 · 2026-11-10</h2>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://github.com/Linum-AI/pjit-21k" target="_blank" rel="noopener">Linum-AI/pjit-21k · 一个只花 $21K 训出来的文生图模型</a></h3>
+<p>一家做 AI 动画工具的两人小公司，从零训了一个 2B 参数的像素空间 DiT（不用 VAE），总算力 8,415 张 H100·小时，按每小时 $2.50 折算约 $21,038——一辆二手车的钱。权重和代码都是 Apache-2.0。意外在于：底模不再只是大厂的事，训练账本、数据配比（6.1 亿张 512px + 5 千万张 1024px）全公开，「自己训一个专门画自家短剧画风的底模」第一次有了明确价码。他们故意把带文字的图全过滤掉，所以它写不了字、做不了海报。</p>
+<p class="meta">来源：GitHub + Linum 博客《Training a Text-to-Image Model for $21K》· Apache-2.0 · 2026-11-04 · Hacker News Show HN 约 285 分 · $21K 是按 $2.50/H100·时的假定单价算的，不是实际账单；没给 FID 之类的独立评测，多人、全身、世界知识类画面作者自认会失败 · 判断：研究版底模，不是成品工具；对 AI 短剧的价值是成本参照和「为动画做数据筛选」的思路，作者说下一步是视频模型，值得跟 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/anteloc/ldraw-mecha" target="_blank" rel="noopener">anteloc/ldraw-mecha</a></h3>
+<p>把一个 LEGO 模型的 LDraw 源文件丢给 AI agent，它先「读懂」里面的齿轮、铰链、活塞是怎么连着的，规划各部件怎么联动，再写成 Blender 的 Python 代码：自动搭骨骼（rig）、自动出动画。意外在于它补的是动画里最费人工的那一步——绑定和机械联动——而且是靠推理结构，不是靠生成视频去猜。</p>
+<p class="meta">来源：GitHub · 10 stars / 0 forks · AGPL-3.0 · 首次提交 2026-10-03 · 最近提交 2026-11-07 · 72 次提交 · Hacker News Show HN 约 30 分（2026-11-06）· 星数很少，安装要装 Blender、LeoCAD 等一整套，Linux / Windows 作者标为未测试 · 判断：「agent 读结构 → 写 Blender 代码出动画」这条路比纯视频生成可控，AI 短剧里的道具、机关镜头可以借这个思路；不是交易内容，不是点子库 · 发现：Knowledge Vault 意外之喜</p></article>
 </section>
 <section>
 <h2>已读笔记 · 2026-11-09</h2>
