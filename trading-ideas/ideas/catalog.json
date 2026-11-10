@@ -1,6 +1,6 @@
 {
  "version": 1,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "readme": "点子挖掘机的真相源。加新点子前先全文搜索本文件：已存在的点子直接跳过，不存在的才新增。status: backlog=待扒 in_progress=扒取中(一次只允许一个) published=已发布笔记 killed=已测/已放弃(留死因)。verdict: win=跑赢baseline fail=没跑赢 inconclusive= inconclusive null=资料型无回测。",
  "ideas": [
   {
@@ -5027,6 +5027,242 @@
     "momentum"
    ],
    "notes": "2026-11-09 hunting 候选（GitHub/TV 路首选），未测，数据门 blocked，记 backlog。复测证据（对方数字，非我方回测）：纽约时段双向 1504 笔，扣成本后 +$231,557/张、+$153.96/笔，验证期 profit factor 1.33，开发期 t 统计 2.82，2020–2026 每年都赚钱，去掉最好 10 笔仍赚 +$107,255；同一规则在 ES、黄金、BTC 及 NQ 亚盘/伦敦盘全部失败。Blocked 原因：需 2020→2026 NQ 连续合约 1 分钟数据，免费源不可得——historicalfuturesdata 全历史 $59 一次性（免费仅最近一个月 + 部分日线）；Kaggle tzamrik 免费集（2022-12→2025-12，正规时段 1 分钟，284,310 行）需账号且窗口仅 3 年、熊市覆盖边缘（2022 熊市主体在窗口外，靠 VIX ≥30 事件补压力覆盖）。重试路径：拿到 1 分钟 NQ 数据后按预注册主规格测（只测 NQ 纽约时段 09:30–16:00 ET，不得事后混入 ES/黄金/BTC 的失败版本翻案）。产物：goals/idea-catalog/hidden_files/2026-11-09-daily-digging/（PRE_REGISTER.md）。"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-vol-edge",
+   "title": "Volatility Edge 双信号 VIX ETN 策略（Zarattini/Aziz/Mele 2025，eVRP + 期限结构）",
+   "source": "paper",
+   "source_name": "Zarattini, Aziz & Mele, \"The Volatility Edge, A Dual Approach For VIX ETNs Trading\", SFI Research Paper No. 25-91 (2025-06-25, rev 2025-10-28)；独立复现审计 market-graphs Praxis #372649",
+   "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5316487",
+   "claim": "eVRP = VIX − 10 日已实现波动（年化）；eVRP>0 且 contango（VIX<VIX3M）时做空波动、名义 VIX/100；eVRP≤0 且 contango 时半仓做空；eVRP≤0 且 backwardation 时做多波动、名义 VIX/100；eVRP>0 且 backwardation 时现金；±2% 再平衡带；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "volatility",
+    "vix",
+    "short-vol",
+    "etf"
+   ],
+   "result": {
+    "sample": "2011-10-04->2026-10-30",
+    "strategy": "+329.98%",
+    "baseline": "+716.20%",
+    "excess_pp": -386.22,
+    "sharpe": 0.708,
+    "baseline_sharpe": 0.924,
+    "trades": 1210,
+    "max_dd": "-29.66%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。1210 次调仓，日频 3781 天。筛选段 Sharpe 0.741 vs 门 1.314（SPY 0.814+0.5）不过，差 0.573；留出段 0.555 vs 门 1.919（SPY 1.419+0.5）不过，差 1.364；熊市段 0.585 vs SPY -1.079 过；全窗口 Sharpe 0.708 vs SPY 0.924，累计 +329.98% vs SPY +716.20%，最大回撤 -29.66% vs SPY -33.72%。仓位结构：做空 3528 天（93%）、做多 88 天、现金 166 天，平均部署名义 24.7%——与审计的 89%/4%/7% 一致。2018-02 volmageddon 如设计般躲过：02-02 收盘 VIX 17.31 > VIX3M 17.03 翻 backwardation，当日转现金，02-05/02-06 的 SVXY -83% 单日崩盘未吃到。偏离明示：原文用付费 Norgate ETN 数据、审计用 CBOE 期货结算重建指数（2008–2025，Sharpe 1.03）；本轮用可交易 ETN（SVXY 贯穿做空腿，2018-02-28 起 -0.5x 故美元仓位 ×2；VIXY 做多腿；XIV 已退市 Yahoo 无数据、stooq 现为 JS 墙拉不到），窗口自 SVXY 成立日 2011-10-04 起（不含 2008 年审计 +78% 的大年）。死因：结构性低 beta + VRP 压缩——审计的 1.03 建立在 2008 大年与期货指数上，ETN 实现版全窗口 Sharpe 仅 0.708；留出段（2023–2026 强牛市，SPY Sharpe 1.419）门高达 1.919，低 beta  carry 够不着。放弃抢救：加杠杆改的是策略本身且会炸熊市段；与已杀 p1-vix-term-structure（裸升贴水做空，Sharpe 0.38）、r2-vix-premium（条件式 SPX+VIX 期货，0.633）机制不同——本条信号是 eVRP + 期限结构双维度、含做多/现金腿，仍未过门，VIX 族第三次确认。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_voledge.py、results_voledge.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-holy-grail",
+   "title": "Holy Grail Dual Momentum（Hentea 2020，Schwoerer 现金版：10 基金 3 个月动量取前 4）",
+   "source": "blog",
+   "source_name": "Toma Hentea, Seeking Alpha 2020-01-31；Martin Schwoerer 现金版；BestFolio 策略页（数据至 2026-11-09）",
+   "source_url": "https://bestfolio.app/strategies/schwoerer-holy-grail",
+   "claim": "每月末按 10 只基金（SPY、QQQ、MDY、EFA、VWO、FXI、VNQ、GLD、TLT、LQD）过去 3 个月总收益排序，持有前 4 只各 25%；VBMFX 3 个月收益 < BIL 3 个月收益时全仓现金（BIL）；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "momentum",
+    "tactical-allocation",
+    "dual-momentum"
+   ],
+   "result": {
+    "sample": "2007-09->2026-10",
+    "strategy": "+692.21%",
+    "baseline": "+627.93%",
+    "excess_pp": 64.28,
+    "sharpe": 1.115,
+    "baseline_sharpe": 0.748,
+    "trades": 553,
+    "max_dd": "-15.02%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。553 次换仓，月频 230 个月，现金月 86/230（37%）。筛选段 Sharpe 1.163 vs 门 1.090（SPY 0.590+0.5）过（仅 +0.073）；留出段 0.896 vs 门 2.100（SPY 1.600+0.5）不过，差 1.204；熊市段 0.970 vs SPY -0.438 过；全窗口 Sharpe 1.115 vs SPY 0.748，累计 +692.21% vs SPY +627.93%（超额 +64.28pp），最大回撤 -15.02% vs SPY -50.78%。10 只基金清单以 BestFolio 策略页 HTML 内 10 个代码各出现 13 次为准，与博客资产类别清单一一对应（VWO 经 EEM 替身注记确认）。执行：月末收盘判定、次月持有；成本按换手（buys+sells）× 单边 5bps。死因：留出段牛市 beta 缺口——留出段（2022-11→2026-10）SPY 自身 Sharpe 1.600，门 2.100，分散轮动到不了；现金开关在债弱股强的 2023–2024 年里误伤（37% 时间空仓错过牛市）。放弃抢救：Hentea 原版（开关切 TLT 而非现金）BestFolio 自报 Sharpe 0.76、回撤 -42.6%，牛市里同样滞后；修开关补不上 1.20 的差。与已杀 p2-dual-momentum-gem（12 个月动量、二选一、AGG 避险）机制不同：本条是 3 个月动量、10 选 4、现金开关。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_holygrail.py、results_holygrail.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-stride",
+   "title": "STRIDE Turtle 55/20 趋势跟踪（8 只宏观 ETF，1x 无杠杆）",
+   "source": "github",
+   "source_name": "JAbarca74/stride（2026-10-19，MIT）+ dev.to 说明文",
+   "source_url": "https://github.com/JAbarca74/stride",
+   "claim": "8 只 ETF（SPY、EFA、IEF、TLT、GLD、SLV、DBC、UUP）各做 Turtle：收盘价 > 55 日最高且 > SMA200 时入场，跌破 20 日最低或最高价 −2N（N=20 日 ATR）时出场；波动率平价（每资产风险 1% 权益/1N，单资产名义上限 25%，组合 1x）；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "trend",
+    "turtle",
+    "donchian",
+    "macro"
+   ],
+   "result": {
+    "sample": "2006-01-03->2026-10-30",
+    "strategy": "+59.22%",
+    "baseline": "+786.11%",
+    "excess_pp": -726.89,
+    "sharpe": 0.385,
+    "baseline_sharpe": 0.643,
+    "trades": 1147,
+    "max_dd": "-19.23%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。574 次入场、573 次出场（1 个仓位窗口末仍持有），日频 5240 天。筛选段 Sharpe 0.387 vs 门 1.053（SPY 0.553+0.5）不过，差 0.667；留出段 0.384 vs 门 1.607（SPY 1.107+0.5）不过，差 1.222；熊市段 0.432 vs SPY -0.438 过；全窗口 Sharpe 0.385 vs SPY 0.643，累计 +59.22% vs SPY +786.11%，最大回撤 -19.23% vs SPY -55.19%。偏离/简化明示：原文含 IBIT/ETHA（2024 年才成立，不满足 10 年窗口，剔除）；原文 Kelly/杠杆层（1.5–2.0x）去掉、按 1x 上限（名义 = min(1%/(N/价格), 25%, 剩余仓位至 100%），剩余 <2% 跳过入场）；金字塔加仓不做；OHLC 用 Adj Close/Close 调整因子修正。实现 bug 修复：首版同日入场+出场信号会重复记入场（805 次入场 vs 569 次出场不平衡），修为入场当日不判出场后 574/573 对上。死因：1x Turtle 在宏观 ETF 上太慢、beta 太低——熊市防御在（轮动到 TLT/GLD/UUP），牛市进攻不在；留出段 SPY Sharpe 1.107，门 1.607，趋势策略够不着。放弃抢救：加仓/加杠杆改策略本质且不补 Sharpe；缩短入场到 20 日收敛到已杀 r12-qqq-btc-donchian 的 whipsaw 死因。独立复核：全新独立脚本（不 import lib，Wilder ATR 显式递推、门数学重写）重算，入场/出场/笔数、筛选/留出/熊市/全窗口 Sharpe、累计、最大回撤全部对上（小数点后四位）。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_stride.py、results_stride.json、recheck_stride.py）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-kda",
+   "title": "KDA Kipnis 防守自适应配置（金丝雀 + 最小方差，2019）",
+   "source": "blog",
+   "source_name": "Ilya Kipnis, \"Kipnis Defensive Adaptive Asset Allocation\" (2019-01-24)；AllocateSmartly 2019-02-26 复现文；BestFolio \"KDA As Published\"",
+   "source_url": "https://allocatesmartly.com/ilya-kipnis-defensive-adaptive-asset-allocation/",
+   "claim": "每月末算 1-3-6-12 月加权动量分（12×r21+4×r63+2×r126+r252）；金丝雀 EEM/AGG 两只分 >0 则 100% 投资宇宙、一只则 50%、都不则 100% crash 保护（IEF 分 >0 否则现金）；投资宇宙（SPY、VGK、EWJ、EEM、VNQ、RWX、IEF、TLT、DBC、GLD）取动量分前 5（剔负分），按加权协方差最小方差配置；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "tactical-allocation",
+    "momentum",
+    "canary",
+    "min-variance"
+   ],
+   "result": {
+    "sample": "2008-02->2026-10",
+    "strategy": "+160.69%",
+    "baseline": "+495.60%",
+    "excess_pp": -334.91,
+    "sharpe": 0.748,
+    "baseline_sharpe": 0.782,
+    "trades": 1015,
+    "max_dd": "-10.53%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。1015 次换仓，月频 225 个月；金丝雀全开 114 月、半开 76 月、全关 35 月。筛选段 Sharpe 0.659 vs 门 1.101（SPY 0.601+0.5）不过，差 0.442；留出段 1.130 vs 门 2.209（SPY 1.709+0.5）不过，差 1.079；熊市段 0.807 vs SPY -0.183 过；全窗口 Sharpe 0.748 vs SPY 0.782，累计 +160.69% vs SPY +495.60%，最大回撤 -10.53% vs SPY -28.71%。执行：月末收盘判定、次月持有（AllocateSmartly 假设同收盘执行，差 1 天，注明）；金丝雀用 EEM/AGG（Kipnis 原版 VWO/BND，同敞口）；权重 <2% 去掉按比例重分（AllocateSmartly 实现细节）；最小方差用 scipy SLSQP（long-only），协方差 = 21 日波动率 × 加权相关系数（12×ρ21+4×ρ63+2×ρ126+ρ252）/19。死因：留出段（2023–2026）SPY 自身 Sharpe 1.709，门 2.209，分散 TAA 够不着；最小方差集中低波资产，牛市里 beta 不足。留出段 Sharpe 1.130 是本轮 TAA 族最高，但门更高。放弃抢救：改等权/改金丝雀都是重设计策略，且补不上 1.08 的差。catalog 与 lyra 内此前无 HAA/金丝雀/最小方差条目。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_kda.py、results_kda.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-cc-btceth",
+   "title": "BTC/ETH cash-and-carry 常开版（现货多 + perp 空，收资金费）",
+   "source": "blog",
+   "source_name": "WiseQuant, \"The Only Trading Strategy That Never Had a Losing Year\", YouTube（2019-11→2026-10）",
+   "source_url": "https://www.youtube.com/watch?v=Iurt1sAB7HE",
+   "claim": "常开无参数：50% BTC / 50% ETH；每 $1 资本 75¢ 买现货、25¢ 作 short perp 保证金（3x 杠杆）；杠杆偏离 2x–5x 时调回 3x；收每 8 小时资金费；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "crypto",
+    "funding",
+    "cash-and-carry",
+    "market-neutral"
+   ],
+   "result": {
+    "sample": "2020-01->2026-10",
+    "strategy": "+94.21%",
+    "baseline": "+158.23%",
+    "excess_pp": -64.02,
+    "sharpe": 10.103,
+    "baseline_sharpe": 0.796,
+    "trades": 142,
+    "max_dd": "-0.58%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。142 次再平衡，日频 2496 天。筛选段 Sharpe 10.884 vs 门 1.202（SPY 0.702+0.5）过；留出段 16.254 vs 门 2.073（SPY 1.573+0.5）过；熊市段 Sharpe -1.910 vs SPY -1.079 不过——全轮唯一败在熊市段的条目；全窗口 Sharpe 10.103 vs SPY 0.796，累计 +94.21% vs SPY +158.23%，最大回撤 -0.58% vs SPY -33.72%。熊市段诊断：56 个 SPY 熊市交易日里策略累计仅 -0.28%（SPY -15.56%），经济上远胜，但熊市日资金费均值转负（-0.005%/日 vs 全样本 +0.035%/日），策略在熊市日每天稳定微亏、波动极小，Sharpe 被口径放大到 -1.910——失败是熊市段 Sharpe 口径的 artifact，不是经济亏损。年度回报与原文高度吻合（2020 +18.7% vs 原文 +17.5%、2021 +30.0% vs +29.3%、2022 +1.86% vs +1.2%、2023 +6.28% vs +6.0%、2024 +10.07% vs +9.5%、2025 +3.87% vs +3.4%、2026 +1.64% vs +1.2%），实现可信。偏离明示：Binance 档案资金费率自 2020-01-01 起（2019-11/12 两月 404），窗口相应缩短；Binance API 自本机 geo-block，现货日收改用 Yahoo BTC-USD/ETH-USD；perp 价格收益以现货收益代理（基差忽略）；成本统一单边 5bps（原文现货 taker 0.10% + perp 0.05% + 滑点 0.02%，本测试是乐观版）。放弃抢救：资金费 ≤0 时平仓收敛到已杀 p4-btc-funding-carry 的翻转摩擦死因（483 次进场吃掉全部 carry）；熊市日空仓会使熊市段 Sharpe 无定义，仍判不过。标注：熊市段门按 Sharpe 比较会惩罚近套利低波策略，用户可考虑熊市段是否改比累计收益——不擅自改门。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_cc.py、results_cc.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-verdad",
+   "title": "Verdad Countercyclical 信用周期三态配置（Infinger 2021，Baa 利差 + 曲线斜率 + 200 日趋势门）",
+   "source": "blog",
+   "source_name": "Graham Infinger, Verdad, 2021-04 两篇研究笔记；BestFolio \"Verdad Countercyclical (Standard)\" 策略页（数据至 2026-11-09）",
+   "source_url": "https://bestfolio.app/strategies/verdad-countercyclical",
+   "claim": "每月末（提前 2 个交易日读数）比 Baa−10 年利差与 10 年−1 年斜率各自的 10 年中位数：利差宽 → Growth（50% SPY、40% IWN、10% GLD）；利差紧且曲线平 → Inflation（50% SPY、10% IWN、40% GLD）；利差紧且曲线陡 → Slowdown（50% LQD、40% IEF、10% IWN）；SPY 与黄金袖各设 200 日均线门，连续 5 收低于均线转入 IEF、连续 5 收高于均线回来；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "tactical-allocation",
+    "credit-cycle",
+    "trend"
+   ],
+   "result": {
+    "sample": "2006-02->2026-10",
+    "strategy": "+511.34%",
+    "baseline": "+765.33%",
+    "excess_pp": -253.99,
+    "sharpe": 0.813,
+    "baseline_sharpe": 0.639,
+    "trades": 233,
+    "max_dd": "-25.01%"
+   },
+   "notes": "2026-11-10 新点子实测（killed）。233 次权重变化，日频 5220 天；状态月 Growth 81、Inflation 119、Slowdown 49；SPY 袖趋势门关闭 1048 天、GLD 袖关闭 1657 天。筛选段 Sharpe 0.687 vs 门 1.041（SPY 0.541+0.5）不过，差 0.354；留出段 1.444 vs 门 1.644（SPY 1.144+0.5）不过，差 0.200（本轮最接近的一次）；熊市段 0.070 vs SPY -0.438 过；全窗口 Sharpe 0.813 vs SPY 0.639，累计 +511.34% vs SPY +765.33%，最大回撤 -25.01% vs SPY -55.19%。死因诊断：留出段最差的月份集中在 SPY 熔断式反弹月（2026-04 -9.5pp、2022-10 -8.2pp、2025-05 -7.2pp），当时状态多为 Slowdown（0% 股票）或 Inflation（50% 股票），叠加趋势门在反弹初段仍把 SPY 袖趴在 IEF——信用周期状态是月频慢变量，接不住 V 形反弹。抢救：趋势确认 5 日 → 3 日（r14-verdad-3c），结果更差（筛选 0.649、留出 1.389），切换更快 = 更多 whipsaw，放弃，不再试别的参数。利差/斜率取 FRED 日频（BAA10Y、DGS10−DGS1，无 key 的 fredgraph.csv 直拉）；执行口径：信号收盘判定、次日收益起效（与本轮月频策略同一口径）。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_verdad.py、results_verdad.json）。（熊市段 Sharpe 为日收益 √252 计）"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "date_added": "2026-11-10",
+   "date_updated": "2026-11-10",
+   "kind": "strategy",
+   "note_url": null,
+   "priority": null,
+   "id": "r14-verdad-3c",
+   "title": "Verdad Countercyclical 抢救变体：趋势确认 3 日版（r14-verdad 的一次抢救）",
+   "source": "blog",
+   "source_name": "同 r14-verdad（Verdad 2021；BestFolio 策略页），仅趋势确认参数改动",
+   "source_url": "https://bestfolio.app/strategies/verdad-countercyclical",
+   "claim": "与 r14-verdad 完全一致，只把 SPY/黄金袖的趋势确认从连续 5 个收盘改成连续 3 个收盘（进出同改），针对 V 形反弹回场太慢的诊断；Sharpe 跑赢同期 SPY buy-and-hold +0.5。",
+   "status": "killed",
+   "verdict": "fail",
+   "tags": [
+    "tactical-allocation",
+    "credit-cycle",
+    "trend",
+    "rescue"
+   ],
+   "result": {
+    "sample": "2006-02->2026-10",
+    "strategy": "+446.38%",
+    "baseline": "+765.33%",
+    "excess_pp": -318.95,
+    "sharpe": 0.774,
+    "baseline_sharpe": 0.639,
+    "trades": 293,
+    "max_dd": "-27.71%"
+   },
+   "notes": "2026-11-10 抢救变体实测（killed）。293 次权重变化，日频 5220 天。筛选段 Sharpe 0.649 vs 门 1.041（SPY 0.541+0.5）不过，差 0.392；留出段 1.389 vs 门 1.644（SPY 1.144+0.5）不过，差 0.255；熊市段 0.151 vs SPY -0.438 过；全窗口 Sharpe 0.774 vs SPY 0.639，累计 +446.38% vs SPY +765.33%，最大回撤 -27.71% vs SPY -55.19%。抢救结论：3 日确认比 5 日更差（筛选 0.649<0.687、留出 1.389<1.444、全窗口 0.774<0.813），切换更快只增加了 whipsaw，未修复留出段缺口——缺口主因是状态配置（Slowdown 月 0% 股票）在熔断反弹月天然踏空，不是确认天数。按预注册只试这一次，不再调参。产物：goals/idea-catalog/hidden_files/2026-11-10-daily-digging/（PRE_REGISTER.md、backtest_verdad3c.py、results_verdad3c.json）。（熊市段 Sharpe 为日收益 √252 计）"
   }
  ]
 }
