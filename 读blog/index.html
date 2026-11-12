@@ -54,12 +54,25 @@
 <h1>读 Blog</h1>
 <p class="sub">每日阅读记录：精选值得一读的文章与视频，详见 <a href="setup.html">Setup</a>。</p>
 <section class="cat-grid">
-<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 10 篇</p></article>
-<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 9 篇</p></article>
+<article class="cat-card"><span class="cat-icon">📈</span><h2>GitHub 交易 / AI 短剧热门</h2><p>已读 11 篇</p></article>
+<article class="cat-card"><span class="cat-icon">⭐</span><h2>GitHub 其他热门</h2><p>已读 10 篇</p></article>
 <article class="cat-card"><span class="cat-icon">▶️</span><h2>YouTube 教育</h2><p>已读 7 篇</p></article>
 <article class="cat-card"><span class="cat-icon">📰</span><h2>炒股 Podcast / 教育</h2><p>已读 7 篇</p></article>
   <article class="cat-card"><span class="cat-icon">📄</span><h2>论文</h2><p>已读 5 篇</p></article>
   
+</section>
+<section>
+<h2>已读笔记 · 2026-11-12</h2>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 其他热门</span>
+<h3><a href="https://github.com/0xdeadf1sh/T1DMAI" target="_blank" rel="noopener">0xdeadf1sh/T1DMAI · 一个 1 型糖尿病人拿自己的血糖测了 26 个预测模型</a></h3>
+<p>作者用自己的连续血糖数据加公开的 MetaboNet，把 XGBoost、LightGBM、LSTM、Chronos-2、TimesFM 2.5 和自己的小 transformer（DILATE 损失 + 3,771 参数的 LoRA）放一起比 2 小时后的血糖。意外在于：这根本是一份时间序列预测的实战课，结论几乎能原样搬到行情上——XGBoost 第一，零样本基础模型赢不了微调过的；更扎心的是 RMSE 最低的模型几乎抓不到低血糖（XGBoost 0%），反倒是线性外推抓到 58%。「平均误差最小」和「抓住尾部事件」是两回事，还附了 conformal 置信带实际覆盖率的校准。</p>
+<p class="meta">来源：GitHub + Hacker News Show HN（约 20 分）· 22 stars · MIT · 最近提交 2026-11-11 · 全部数字是作者自报、单人数据，不可直接采信 · 明确标注不是医疗器械 · 判断：不是交易工具，是一份做得认真的「预测模型怎么比」样板，值得拿它的评测框架（分时长 Wilcoxon、尾部命中率、置信带覆盖率）对照自己的回测 · 发现：Knowledge Vault 意外之喜</p></article>
+<article class="article-card" data-found-by="vault-weekly">
+<span class="tag-pill">GitHub 交易 / AI 短剧热门</span>
+<h3><a href="https://taipeiledger.com/gpu/" target="_blank" rel="noopener">Taipei Ledger · 每天一张的 GPU 租金行情表</a></h3>
+<p>把 AWS、Azure、RunPod（两档）和 Vast.ai 的 11 种 GPU 每小时租金摆成一张日更表，像大宗商品报价板：11 月 11 日 H100 SXM 从 Vast.ai 中位数 $2.94 到 AWS $6.88，B200 从 RunPod 社区 $5.98 到 AWS $14.24。意外在于：算力现货价是 AI 供需最直接的价格信号，比看英伟达财报早；而做这张表的网站本身是专做台湾公司数据的（月营收日、法人买卖、供应链），台股月营收每月 10 日前就出，本来就是 AI 供应链的提前指标——一个页面把「算力价格」和「台湾供应链」两条线索放到了一起。</p>
+<p class="meta">来源：taipeiledger.com（MDK Analytics）+ Hacker News Show HN（约 11 分）· 网站，非开源 · 2026-11-11 数据 · 只有 2026-11-02 起约 10 天历史，没有下载或 API；只算计算费，不含存储和流量（HN 评论指出 Vast.ai 部分主机流量费高达 $40/TB）；AWS/Azure 是挂牌价，不含包年折扣 · 判断：现在还只是一张快照，攒够几个月才有趋势意义；可以先收藏，台湾月营收那几页更值得马上看 · 发现：Knowledge Vault 意外之喜</p></article>
 </section>
 <section>
 <h2>已读笔记 · 2026-11-11</h2>
