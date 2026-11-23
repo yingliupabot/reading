@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "readme": "点子挖掘机的真相源。加新点子前先全文搜索本文件：已存在的点子直接跳过，不存在的才新增。status: backlog=待扒 in_progress=扒取中(一次只允许一个) published=已发布笔记 killed=已测/已放弃(留死因)。verdict: win=跑赢baseline fail=没跑赢 inconclusive= inconclusive null=资料型无回测。",
  "ideas": [
   {
@@ -10759,6 +10759,270 @@
    ],
    "title": "PPUT：CBOE 5% 保护性看跌",
    "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "Long SPX 全收益 + 卖 1 个月 SPX call；行权价随前月 25Δ call IV 动态调整（低波近 ATM、高波至多 116.5% 现价）；short call 名义本金封顶在权益仓位 20%，80% 上涨不封顶；每月 5 个 roll 日、每次换 1/5。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-cald",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2006-01->2026-11，251 个月。筛选段 Sharpe 0.503 vs 门 1.154 不过，差 0.650；留出段 0.976 vs 门 1.553 不过，差 0.578；熊市段 -0.448 vs SPY -0.438 不过；全窗口 Sharpe 0.592 vs SPY 0.734，累计 323.5% vs SPY 694.8%，最大回撤 -45.2%。死因：20% 封顶仍截掉牛市上行，全窗口累计只有 SPY 的约 47%（323.5% vs 694.8%）；熊市段以 0.010 之差惜败（-0.448 vs -0.438），筛选段差 0.651、留出段差 0.577。成本口径：每月 5 个 roll 日（标准到期日 + 前 4 个交易日），一年 60 次 roll 事件。指数约 2022 年推出，2006–2022 历史是按现行方法论回填的回测、非实盘；factsheet Sharpe 0.85 是对 T-bill 口径、非点子库门。放弃抢救：CBOE 指数规则固定，无法调参；80% 不封顶仍不够——熊市段差 0.010 只是惜败的表象，真正堵死的是两段 Sharpe 门各差 0.6 左右。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-cald.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+694.85%",
+    "baseline_sharpe": 0.734,
+    "excess_pp": -371.32,
+    "max_dd": "-45.17%",
+    "sample": "2006-01->2026-11",
+    "sharpe": 0.592,
+    "strategy": "+323.52%",
+    "trades": 1255
+   },
+   "source": "industry",
+   "source_name": "CBOE Validus Dynamic Call BuyWrite 方法论 PDF",
+   "source_url": "https://cdn.cboe.com/api/global/us_indices/governance/Cboe_Validus_Dynamic_Call_Buy_Write_Indices_Methodology.pdf",
+   "status": "killed",
+   "tags": [
+    "options",
+    "buywrite",
+    "spy",
+    "monthly"
+   ],
+   "title": "CALD：Cboe Validus 动态 Call BuyWrite（20% 封顶）",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "T-bill 抵押卖 1 个月 SPX put；行权价随前月 25Δ call IV 动态调整（低波近 ATM、高波更深 ITM）；每月 5 次分批 roll。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-putd",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2006-01->2026-11，251 个月。筛选段 Sharpe 0.457 vs 门 1.154 不过，差 0.697；留出段 0.918 vs 门 1.553 不过，差 0.635；熊市段 -0.461 vs SPY -0.438 不过；全窗口 Sharpe 0.536 vs SPY 0.734，累计 231.0% vs SPY 694.8%，最大回撤 -42.7%。死因：纯收保费、无 equity 上行；动态 ITM 行权价在高波时多收保费，但在 2022 慢跌与 2026-11 暴跌里 put 腿照样深度实值亏损，熊市段 -0.461 vs SPY -0.438 不过。成本口径：每月 5 个 roll 日，一年 60 次 roll 事件。指数约 2022 年推出，2006–2022 历史是按现行方法论回填的回测、非实盘。放弃抢救：CBOE 指数规则固定，无法调参；与已杀的 PUT/PUTY 同一结构性缺陷，动态行权价没改写结局。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-putd.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+694.85%",
+    "baseline_sharpe": 0.734,
+    "excess_pp": -463.83,
+    "max_dd": "-42.74%",
+    "sample": "2006-01->2026-11",
+    "sharpe": 0.536,
+    "strategy": "+231.01%",
+    "trades": 1255
+   },
+   "source": "industry",
+   "source_name": "CBOE Validus Dynamic PutWrite / SEC 招股书摘要",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1924868/000138713123008622/putd-485bpos_072523_htm.xml",
+   "status": "killed",
+   "tags": [
+    "options",
+    "putwrite",
+    "spy",
+    "monthly"
+   ],
+   "title": "PUTD：Cboe Validus 动态 PutWrite",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "Long S&P 500 成分股 + 每季度买约 10% OTM 的 3 个月 SPX put（季度第三个周五 roll，行权价为最接近且 ≥90% 现价的挂牌价），持有到期。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-pput3m",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2006-01->2026-11，251 个月。筛选段 Sharpe 0.644 vs 门 1.154 不过，差 0.509；留出段 0.937 vs 门 1.553 不过，差 0.617；熊市段 -0.475 vs SPY -0.438 不过；全窗口 Sharpe 0.709 vs SPY 0.734，累计 415.3% vs SPY 694.8%，最大回撤 -38.1%。死因：季度 10% OTM put 比月度 PPUT 便宜，但保护只在季度内跌超 10% 才兑现——2026-11 暴跌（10-30→11-20 指数 -6.34%）没触发，熊市段 -0.475 vs -0.438 不过；全窗口 Sharpe 0.709 是本轮最接近 SPY（0.734）的一条，但两段门差 0.510/0.616。规则出处已用 SEC XTR 招股书 + Global X 方法论摘要双重核实（非二手摘要）。成本：每季度 1 次 roll，一年 4 次。放弃抢救：CBOE 指数规则固定，无法调参；Israelov (2017) 对 PPUT 家族的结论站得住——更便宜的季度保费没改写算术。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-pput3m.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+694.85%",
+    "baseline_sharpe": 0.734,
+    "excess_pp": -279.57,
+    "max_dd": "-38.10%",
+    "sample": "2006-01->2026-11",
+    "sharpe": 0.709,
+    "strategy": "+415.28%",
+    "trades": 83
+   },
+   "source": "industry",
+   "source_name": "Global X XTR 招股书（SEC 2025-03-01）/ Cboe 尾部风险方法论摘要",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1432353/000143235325000128/a497k-sp500tailrisk.htm",
+   "status": "killed",
+   "tags": [
+    "options",
+    "protective-put",
+    "spy",
+    "monthly"
+   ],
+   "title": "PPUT3M：Cboe S&P 500 尾部风险指数（季度 10% OTM put）",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "T-bill 抵押纯 short 1 个月 VIX 期货、持有到期再卖；无 SPX 仓位；每轮卖出量按 VIX 期货涨 25 点仍保留 75% 组合价值定。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-vpd",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2007-11->2026-11，229 个月。筛选段 Sharpe 0.489 vs 门 1.094 不过，差 0.605；留出段 1.029 vs 门 1.703 不过，差 0.675；熊市段 -0.397 vs SPY -0.438 过；全窗口 Sharpe 0.548 vs SPY 0.696，累计 449.3% vs SPY 531.1%，最大回撤 -56.4%。死因：熊市段过（-0.397 vs SPY -0.438），但两段 Sharpe 门差 0.605/0.674；最大回撤 -56.4%（与 CBOE 自身 2004–2019 数字 -56.7% 吻合）；2026-11 暴跌月 -10.22%，四条里最惨。窗口 2007-11 起（指数数据始于 2007-11-16）。独立复核 18/18 对上（seed 20261123，recheck_vpd.py）。放弃抢救：CBOE 指数规则固定，无法调参；VPN（带 long VIX call 的封顶版）是另一条指数、不在跟进清单内，不作替代测试。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-vpd.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+531.12%",
+    "baseline_sharpe": 0.696,
+    "excess_pp": -81.82,
+    "max_dd": "-56.40%",
+    "sample": "2007-11->2026-11",
+    "sharpe": 0.548,
+    "strategy": "+449.29%",
+    "trades": 229
+   },
+   "source": "industry",
+   "source_name": "CBOE VIX Premium Strategy 方法论 PDF",
+   "source_url": "https://res-certification.cboe.com/api/global/us_indices/governance/VPD_Methodology.pdf",
+   "status": "killed",
+   "tags": [
+    "options",
+    "vix",
+    "short-vol",
+    "monthly"
+   ],
+   "title": "VPD：Cboe VIX Premium（纯 short VIX 期货）",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "Long SPX，每月卖 ATM SPX call（第三个周五 roll），持有到期；全权益 + call 保费。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-bxm",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2006-01->2026-11，251 个月。筛选段 Sharpe 0.431 vs 门 1.154 不过，差 0.723；留出段 1.049 vs 门 1.553 不过，差 0.504；熊市段 -0.570 vs SPY -0.438 不过；全窗口 Sharpe 0.530 vs SPY 0.734，累计 192.3% vs SPY 694.8%，最大回撤 -36.3%。死因：ATM call 每月截掉所有涨超保费的月份，全窗口累计只有 SPY 的约 28%（192.3% vs 694.8%）；熊市段 -0.570 比 SPY 还差（暴跌月 call 保费杯水车薪）。Callan 2006 称 1988–2006 跑赢 SPY 的结论在本窗口（2006 起）不成立，与 MDPI 2024“edge faded post-2008”的判断一致。放弃抢救：CBOE 指数规则固定，无法调参。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-bxm.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+694.85%",
+    "baseline_sharpe": 0.734,
+    "excess_pp": -502.5,
+    "max_dd": "-36.29%",
+    "sample": "2006-01->2026-11",
+    "sharpe": 0.53,
+    "strategy": "+192.34%",
+    "trades": 251
+   },
+   "source": "industry",
+   "source_name": "CBOE 策略基准指数列表 / Callan 2006",
+   "source_url": "https://ww2.cboe.com/us/indices/benchmark_indices/",
+   "status": "killed",
+   "tags": [
+    "options",
+    "buywrite",
+    "spy",
+    "monthly"
+   ],
+   "title": "BXM：CBOE S&P 500 BuyWrite（ATM call）",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "Long SPX，每月卖 2% OTM SPX call（第三个周五 roll），持有到期；全权益 + call 保费，只截大涨月。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-bxy",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2006-01->2026-11，251 个月。筛选段 Sharpe 0.540 vs 门 1.154 不过，差 0.614；留出段 1.080 vs 门 1.553 不过，差 0.473；熊市段 -0.515 vs SPY -0.438 不过；全窗口 Sharpe 0.631 vs SPY 0.734，累计 340.5% vs SPY 694.8%，最大回撤 -40.8%。死因：留出段 1.080 甚至略高于 SPY 1.053，但门 1.553 差 0.473；筛选段差 0.614；熊市段 -0.515 不过。2% OTM 比 ATM 好，但仍截牛市。放弃抢救：CBOE 指数规则固定，无法调参。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-bxy.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+694.85%",
+    "baseline_sharpe": 0.734,
+    "excess_pp": -354.3,
+    "max_dd": "-40.78%",
+    "sample": "2006-01->2026-11",
+    "sharpe": 0.631,
+    "strategy": "+340.54%",
+    "trades": 251
+   },
+   "source": "industry",
+   "source_name": "CBOE 策略基准指数列表 / CBOE 2015-07 十指数发布",
+   "source_url": "https://ir.cboe.com/news/news-details/2015/CBOE-Introduces-10-Options-Based-Strategy-Performance-Benchmark-Indexes-07-29-2015/default.aspx",
+   "status": "killed",
+   "tags": [
+    "options",
+    "buywrite",
+    "spy",
+    "monthly"
+   ],
+   "title": "BXY：CBOE S&P 500 2% OTM BuyWrite",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "T-bill 抵押，每月卖 ATM SPX put（第三个周五 roll），持有到期；纯收保费 + 国库券利息。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r27-put",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 实测（killed）。2007-01->2026-11，239 个月。筛选段 Sharpe 0.499 vs 门 1.122 不过，差 0.623；留出段 1.442 vs 门 1.627 不过，差 0.185；熊市段 -0.562 vs SPY -0.438 不过；全窗口 Sharpe 0.614 vs SPY 0.711，累计 230.8% vs SPY 598.2%，最大回撤 -33.0%。死因：留出段 1.442 是本轮最接近的单段（差 0.185），但筛选段差 0.623、熊市段 -0.562 不过——ATM put 在暴跌月深度实值，T-bill 利息 + 保费不够补。窗口 2007-01 起：PUT 日线 2007-01-03 前只有零星点、2005–2006 全年无数据；2006-01 窗口的初版数字因 12 个空月被 resample 补 0% 而作废重跑（见 PRE_REGISTER §3b）。与已杀的 putwrite-replacement（75% SPY + 25% PUT 混合）与 putwrite-event-windows（事件窗口减震 claim）不同——本条是 PUT 指数本身在现行门下的首次完整测试。放弃抢救：CBOE 指数规则固定，无法调参；留出段接近是 2022–2026 高波环境下 put 保费丰厚的 regime 效应，不是可复制的 alpha。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/（backtest 脚本 + results_r27-put.json）。",
+   "priority": null,
+   "result": {
+    "baseline": "+598.20%",
+    "baseline_sharpe": 0.711,
+    "excess_pp": -367.41,
+    "max_dd": "-32.96%",
+    "sample": "2007-01->2026-11",
+    "sharpe": 0.614,
+    "strategy": "+230.78%",
+    "trades": 239
+   },
+   "source": "industry",
+   "source_name": "CBOE 策略基准指数列表",
+   "source_url": "https://ww2.cboe.com/us/indices/benchmark_indices/",
+   "status": "killed",
+   "tags": [
+    "options",
+    "putwrite",
+    "spy",
+    "monthly"
+   ],
+   "title": "PUT：CBOE S&P 500 PutWrite（ATM 月度）",
+   "verdict": "fail"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "每月按供应商主要客户上月收益的收入加权平均值对 S&P 500 供应商排序，做多客户动量最高的前 1/5（等权、月调仓、全程满仓股票）。客户关系取自 10-K 分部附注披露的主要客户（SFAS 131，>10% 销售额），图谱每年按已公开年报重建、无前视。",
+   "date_added": "2026-11-23",
+   "date_updated": "2026-11-23",
+   "id": "r28-customer-momentum",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-23 新点子入库（backlog，未测）。Cohen & Frazzini (2008, Journal of Finance, Smith Breeden Prize)：多空客户动量月 alpha >150bps（约 18%/年），1980–2004；Menzly & Ozbas (2010) 与 Yamamoto et al. (2021) 推广到上下游网络。注意：已发表数字全是多空口径，多头腿（前 1/5）从未发表过 Sharpe；本库自己的动量测试在 2007–2026 已死（r25-dynamic-momentum WML Sharpe -0.128，r19-industry-momentum 已杀），诚实先验：大概率 killed，通过率约 20–30%——但它是未测点子里发表 alpha 最大的一条，减半后仍可能够到门，且全程满仓股票、保留牛市 beta（这正是杀死 17 条期权对冲的原因的反面）。\n待建数据（未动手，非已证伪）：客户关系图谱须从 SEC EDGAR 10-K 分部附注文本解析——主要客户身份没有可靠 XBRL 标签，须逐公司逐年抽文本、解析客户名 + 收入占比、再做名称→ticker 实体消歧，并按已公开年报逐年 PIT 重建。2026-11-23 探针确认文本可取：efts.sec.gov 全文检索 \"principal customers\"、10-K、2024 年 → 131 份命中；未找到免费现成的客户关系图谱（AQR 数据库、Chen–Zimmermann 319 特征均无此图）。禁代用品：付费 FactSet 供应链数据、行业级 Menzly–Ozbas 链接（那是另一条点子，须另立 id）。图谱建成、匹配率与 PIT 规则在预注册里定死后才能开测。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/HUNT_r28.md（猎手报告 + 拒掉清单）。",
+   "priority": null,
+   "result": null,
+   "source": "paper",
+   "source_name": "Cohen & Frazzini, \"Economic Links and Predictable Returns\", Journal of Finance 2008",
+   "source_url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2758776",
+   "status": "backlog",
+   "tags": [
+    "momentum",
+    "supply-chain",
+    "cross-section",
+    "spy",
+    "monthly"
+   ],
+   "title": "客户动量多头（Cohen–Frazzini 2008）",
+   "verdict": "blocked"
   }
  ]
 }
