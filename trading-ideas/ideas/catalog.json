@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "readme": "点子挖掘机的真相源。加新点子前先全文搜索本文件：已存在的点子直接跳过，不存在的才新增。status: backlog=待扒 in_progress=扒取中(一次只允许一个) published=已发布笔记 killed=已测/已放弃(留死因)。verdict: win=跑赢baseline fail=没跑赢 inconclusive= inconclusive null=资料型无回测。",
  "ideas": [
   {
@@ -9409,7 +9409,7 @@
    "aliases": [],
    "baseline": "SPY buy-hold",
    "date_added": "2026-11-19",
-   "date_updated": "2026-11-19",
+   "date_updated": "2026-11-24",
    "kind": "strategy",
    "note_url": null,
    "priority": null,
@@ -9428,7 +9428,7 @@
     "weekly"
    ],
    "result": null,
-   "notes": "2026-11-19 新点子 hunting，数据门 + 交易数门 blocked，记 backlog，未硬测。Blocked 理由（本轮实测）：CFTC 历史文件 fut_fin_txt_2024.zip / fut_fin_txt_2025.zip 均返回 403 Cloudflare \"Just a moment...\"（带 UA 亦然），curl 拉不到；CBOE/Quandl 等免费长历史未找到。另：周频切换预估仅 20–60 笔 <100，也是第二道门。产物：goals/idea-catalog/hidden_files/2026-11-19-daily-digging/（PRE_REGISTER.md §3l、hunting_routeA.md / hunting_routeB.md）。"
+   "notes": "2026-11-19 新点子 hunting，数据门 + 交易数门 blocked，记 backlog，未硬测。Blocked 理由（本轮实测）：CFTC 历史文件 fut_fin_txt_2024.zip / fut_fin_txt_2025.zip 均返回 403 Cloudflare \"Just a moment...\"（带 UA 亦然），curl 拉不到；CBOE/Quandl 等免费长历史未找到。另：周频切换预估仅 20–60 笔 <100，也是第二道门。产物：goals/idea-catalog/hidden_files/2026-11-19-daily-digging/（PRE_REGISTER.md §3l、hunting_routeA.md / hunting_routeB.md）。 2026-11-24 重试：data.cftc.gov 与 www.cftc.gov 均空回复（HTTP 000，连接被重置），Socrata API 路径亦不可达。仍 blocked。"
   },
   {
    "aliases": [],
@@ -10324,11 +10324,11 @@
    "baseline": "SPY buy-hold",
    "claim": "ISM 制造业 PMI>50 持股、<50 持债的股债轮动；需 NAPM/ISM 月频全历史。",
    "date_added": "2026-11-21",
-   "date_updated": "2026-11-21",
+   "date_updated": "2026-11-24",
    "id": "r25-ism-pmi-rotation",
    "kind": "strategy",
    "note_url": null,
-   "notes": "2026-11-21 新点子，blocked：FRED 本机不可达（fredgraph.csv 3 次超时，NAPM 返回 404 + bot-challenge），NAPM 序列 ID 未核实。重试路径：FRED 带 key API 或 ISM 官网月度报告归档。",
+   "notes": "2026-11-21 新点子，blocked：FRED 本机不可达（fredgraph.csv 3 次超时，NAPM 返回 404 + bot-challenge），NAPM 序列 ID 未核实。重试路径：FRED 带 key API 或 ISM 官网月度报告归档。 2026-11-24 重试：fredgraph.csv 带浏览器 UA 仍无返回（60 秒超时、未建文件）；无 key API 路径 400（须注册 key）。仍 blocked，重试路径不变：FRED 带 key API 或 ISM 官网月度报告归档。",
    "priority": null,
    "result": null,
    "source": "blog",
@@ -11003,11 +11003,11 @@
    "baseline": "SPY buy-hold",
    "claim": "每月按供应商主要客户上月收益的收入加权平均值对 S&P 500 供应商排序，做多客户动量最高的前 1/5（等权、月调仓、全程满仓股票）。客户关系取自 10-K 分部附注披露的主要客户（SFAS 131，>10% 销售额），图谱每年按已公开年报重建、无前视。",
    "date_added": "2026-11-23",
-   "date_updated": "2026-11-23",
+   "date_updated": "2026-11-24",
    "id": "r28-customer-momentum",
    "kind": "strategy",
    "note_url": null,
-   "notes": "2026-11-23 新点子入库（backlog，未测）。Cohen & Frazzini (2008, Journal of Finance, Smith Breeden Prize)：多空客户动量月 alpha >150bps（约 18%/年），1980–2004；Menzly & Ozbas (2010) 与 Yamamoto et al. (2021) 推广到上下游网络。注意：已发表数字全是多空口径，多头腿（前 1/5）从未发表过 Sharpe；本库自己的动量测试在 2007–2026 已死（r25-dynamic-momentum WML Sharpe -0.128，r19-industry-momentum 已杀），诚实先验：大概率 killed，通过率约 20–30%——但它是未测点子里发表 alpha 最大的一条，减半后仍可能够到门，且全程满仓股票、保留牛市 beta（这正是杀死 17 条期权对冲的原因的反面）。\n待建数据（未动手，非已证伪）：客户关系图谱须从 SEC EDGAR 10-K 分部附注文本解析——主要客户身份没有可靠 XBRL 标签，须逐公司逐年抽文本、解析客户名 + 收入占比、再做名称→ticker 实体消歧，并按已公开年报逐年 PIT 重建。2026-11-23 探针确认文本可取：efts.sec.gov 全文检索 \"principal customers\"、10-K、2024 年 → 131 份命中；未找到免费现成的客户关系图谱（AQR 数据库、Chen–Zimmermann 319 特征均无此图）。禁代用品：付费 FactSet 供应链数据、行业级 Menzly–Ozbas 链接（那是另一条点子，须另立 id）。图谱建成、匹配率与 PIT 规则在预注册里定死后才能开测。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/HUNT_r28.md（猎手报告 + 拒掉清单）。",
+   "notes": "2026-11-23 新点子入库（backlog，未测）。Cohen & Frazzini (2008, Journal of Finance, Smith Breeden Prize)：多空客户动量月 alpha >150bps（约 18%/年），1980–2004；Menzly & Ozbas (2010) 与 Yamamoto et al. (2021) 推广到上下游网络。注意：已发表数字全是多空口径，多头腿（前 1/5）从未发表过 Sharpe；本库自己的动量测试在 2007–2026 已死（r25-dynamic-momentum WML Sharpe -0.128，r19-industry-momentum 已杀），诚实先验：大概率 killed，通过率约 20–30%——但它是未测点子里发表 alpha 最大的一条，减半后仍可能够到门，且全程满仓股票、保留牛市 beta（这正是杀死 17 条期权对冲的原因的反面）。\n待建数据（未动手，非已证伪）：客户关系图谱须从 SEC EDGAR 10-K 分部附注文本解析——主要客户身份没有可靠 XBRL 标签，须逐公司逐年抽文本、解析客户名 + 收入占比、再做名称→ticker 实体消歧，并按已公开年报逐年 PIT 重建。2026-11-23 探针确认文本可取：efts.sec.gov 全文检索 \"principal customers\"、10-K、2024 年 → 131 份命中；未找到免费现成的客户关系图谱（AQR 数据库、Chen–Zimmermann 319 特征均无此图）。禁代用品：付费 FactSet 供应链数据、行业级 Menzly–Ozbas 链接（那是另一条点子，须另立 id）。图谱建成、匹配率与 PIT 规则在预注册里定死后才能开测。产物：goals/idea-catalog/hidden_files/2026-11-23-daily-digging/HUNT_r28.md（猎手报告 + 拒掉清单）。\n2026-11-24 可行性探针（probe_r28.py，15 只样本：10 只已知集中客户供应商 + 5 只随机大盘股，2024 年 10-K）：XBRL CustomerConcentrationRiskMember 维度可取——3/14 份文件给出可命名、可匹配的客户成员（CRUS→Apple/Foxconn/Luxshare/Pegatron，JBL→Apple，UNFI→WholeFoodsMarket→AMZN 须别名表）；3 份匿名化不可匹配（LITE CustomerA/B/C，AVGO MajorCustomerOne）；3 份有标签无命名成员（SWKS、FLEX、PG——SWKS 叙述称单一客户占 50%+ 却未在 XBRL 具名）；5 份无集中标签（COHR、GLW、MSFT、JNJ、WMT）。efts 全文检索 2024 年“principal customers”10-K 命中 131 份，具名成员子集约 40–60 家/年 → 前 1/5 组合仅约 8–12 只，且图谱呈星形（多家供应商共用 Apple 为客户），信号近乎“Apple 上月收益”的代理。结论：图谱技术上可建（XBRL 维度成员路径），但仅覆盖少数子集、匹配率低、须手工别名表；全量构建（约 500 家 × 20 年 PIT 重建 + 价格 + 回测）仍是数小时数据工程，超单轮预算，本轮不立项。状态保持 backlog，未测。产物：goals/idea-catalog/hidden_files/2026-11-24-daily-digging/（probe_r28.py + probe_r28.json + PRE_REGISTER.md §1）。",
    "priority": null,
    "result": null,
    "source": "paper",
