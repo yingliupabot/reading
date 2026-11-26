@@ -1,6 +1,6 @@
 {
  "version": 2,
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "readme": "点子挖掘机的真相源。加新点子前先全文搜索本文件：已存在的点子直接跳过，不存在的才新增。status: backlog=待扒 in_progress=扒取中(一次只允许一个) published=已发布笔记 killed=已测/已放弃(留死因)。verdict: win=跑赢baseline fail=没跑赢 inconclusive= inconclusive null=资料型无回测。",
  "ideas": [
   {
@@ -9484,7 +9484,7 @@
    "aliases": [],
    "baseline": "SPY buy-hold",
    "date_added": "2026-11-19",
-   "date_updated": "2026-11-25",
+   "date_updated": "2026-11-26",
    "kind": "strategy",
    "note_url": null,
    "priority": null,
@@ -9503,7 +9503,7 @@
     "event-driven"
    ],
    "result": null,
-   "notes": "2026-11-19 新点子 hunting，数据门 + 交易数门 blocked，记 backlog，未硬测。Blocked 理由：Yahoo ^CPC 0 行；CBOE API 307 Cloudflare 跳转；无免费 2006–2026 日频 Total PCR 长历史。另：窗口内预估仅 55–65 个事件 <100 笔下限。阈值放宽到 97.5 百分位属改规则，不做。记 backlog。产物：goals/idea-catalog/hidden_files/2026-11-19-daily-digging/（PRE_REGISTER.md §3o）。\n2026-11-25 方向 1 复核与勘误（HUNT_dir1_options.md §三-R2/§四-P1）：CBOE Total/Equity/Index/SPX PCR 日频 CSV 可免费直下（cdn.cboe.com/resources/options/volume_and_call_put_ratios/，2006-11-01→2019-10-04，3,253 个交易日），“无免费长历史”的旧记录已过时，真正缺口是 2019-10→2026 无免费回填；另 claim 写 Total PCR >1.0 与 Scheler 原文序列不符（Total 版 30.9% 的日子 >1.0、n≈1,004；Scheler n=61、均值 ~0.6 的序列更像 Equity PCR，>1.0 仅 26 天），死因描述应以 Equity PCR 为准。结论不变：按 Scheler 自己的表算 Fear 买入 30 日版 Sharpe ≈0.68（年化 +9.5%/波动 13.9%），且 2000–2022 仅 61 个事件 <100 笔下限，算术与交易数双死，仍 blocked，不复活。付费选项（ORATS $599 + $99/月、Unusual Whales API $99/月起）只能解数据门、解不了算术门，未注册未付费，等用户定。"
+   "notes": "2026-11-19 新点子 hunting，数据门 + 交易数门 blocked，记 backlog，未硬测。Blocked 理由：Yahoo ^CPC 0 行；CBOE API 307 Cloudflare 跳转；无免费 2006–2026 日频 Total PCR 长历史。另：窗口内预估仅 55–65 个事件 <100 笔下限。阈值放宽到 97.5 百分位属改规则，不做。记 backlog。产物：goals/idea-catalog/hidden_files/2026-11-19-daily-digging/（PRE_REGISTER.md §3o）。\n2026-11-25 方向 1 复核与勘误（HUNT_dir1_options.md §三-R2/§四-P1）：CBOE Total/Equity/Index/SPX PCR 日频 CSV 可免费直下（cdn.cboe.com/resources/options/volume_and_call_put_ratios/，2006-11-01→2019-10-04，3,253 个交易日），“无免费长历史”的旧记录已过时，真正缺口是 2019-10→2026 无免费回填；另 claim 写 Total PCR >1.0 与 Scheler 原文序列不符（Total 版 30.9% 的日子 >1.0、n≈1,004；Scheler n=61、均值 ~0.6 的序列更像 Equity PCR，>1.0 仅 26 天），死因描述应以 Equity PCR 为准。结论不变：按 Scheler 自己的表算 Fear 买入 30 日版 Sharpe ≈0.68（年化 +9.5%/波动 13.9%），且 2000–2022 仅 61 个事件 <100 笔下限，算术与交易数双死，仍 blocked，不复活。付费选项（ORATS $599 + $99/月、Unusual Whales API $99/月起）只能解数据门、解不了算术门，未注册未付费，等用户定。\n\n2026-11-26 补充（方向 1 猎手，HUNT_dir1_options.md）：Sugra 免费档（$0、50 请求/天、全部 1,715 个端点、无信用卡）可把 Total/Equity PCR 从 2019-10-04 续到 2026（GET /api/v1/cboe/put-call-ratio/history?family=total，六个 family，6 次请求拉完），但须注册免费 key——本轮未注册（注册决定权在用户）。Wayback 续接已证伪：最多约 32 个散日（约 2% 覆盖），2019-10→2021-01 完全空白、2022→2026-05 旧 URL 快照无值，r23 不能用 Wayback 复活。2026 新文献反而收紧结论：spboucher 修正版把 v1 的 implied kurtosis long-short Sharpe 2.33 撤回（目标错位 bug），修正后 −0.33；14 个排序里成本后唯一幸存的是 ATM IV 水平排序（10bps 后净 Sharpe 0.34），long-only 翻译约 0.6–0.75，仍够不着两段门。结论不变：仍 blocked，不复活。"
   },
   {
    "aliases": [],
@@ -11058,11 +11058,11 @@
   "baseline": "SPY buy-hold",
   "claim": "议员披露后第一个交易日买入其买入的股票，等权持有 62 天（或 6 个月）。",
   "date_added": "2026-11-25",
-  "date_updated": "2026-11-25",
+  "date_updated": "2026-11-26",
   "id": "r30-congress-disclosure-copy",
   "kind": "strategy",
   "note_url": null,
-  "notes": "2026-11-25 记 killed：本轮未跑本站回测，结论依据 2026-11 五项独立研究 + NANC 实盘（外部证伪，非本站回测）。CapitolAlpha（4,456 笔 2020–2025 买入，披露后买入持 62 天）：四因子 alpha −1.63%/年（t=−0.66，p=0.51）；20 天 0.00%、125 天 −0.68%；从交易日起算同样不显著——死在选股本身，不在披露延迟（众议院披露中位仅 13 天）。Politraders（29,685 笔）：五种抄法全败；严格筛选 5 人→2025 年 3 人零交易，余下 2 人 14% 对标普 18%；共识买入三年 −29/−8/+25 点，唯一赢年全靠 5 只半导体。Arkanum WP no.4：买入 6 个月相对等权标普 +2.0%，卖出 +3.4%——买的不比卖的好。AIQuantBench：全部买入 10.6%/年 = 随机水平，相对 SPY 12.6% 对 14.9%。Oliveira：买入 1 年相对标普 −5.36 点；委员会相关买入相对市场仅 +0.40 点。活的实现 NANC（2023-02 上市）：Sharpe 1.45 < SPY 1.52。最后一条绕路（领导人专属，Wei & Zhou NBER W34524 +47 点/年，交易日口径、n=20、工作论文）本轮用 CapitolAlpha 快照实测：众议院领导人买入 88 笔、有 ticker 仅 43 笔 <100 下限，2021 年后仅 21 笔、2022 熊市段仅 8 笔，连探索性回测的统计效力都没有。免费数据只有 2020–2025（6 年），到不了 2006 年。方向关闭：重开条件仅为 (a) 有预注册研究在披露日口径下做出显著正 alpha，或 (b) 用户批付费数据把窗口拉到 10 年以上（先验通过率仍 <10%）。产物：goals/idea-catalog/hidden_files/2026-11-25-daily-digging/HUNT_dir3_congress.md。",  
+  "notes": "2026-11-25 记 killed：本轮未跑本站回测，结论依据 2026-11 五项独立研究 + NANC 实盘（外部证伪，非本站回测）。CapitolAlpha（4,456 笔 2020–2025 买入，披露后买入持 62 天）：四因子 alpha −1.63%/年（t=−0.66，p=0.51）；20 天 0.00%、125 天 −0.68%；从交易日起算同样不显著——死在选股本身，不在披露延迟（众议院披露中位仅 13 天）。Politraders（29,685 笔）：五种抄法全败；严格筛选 5 人→2025 年 3 人零交易，余下 2 人 14% 对标普 18%；共识买入三年 −29/−8/+25 点，唯一赢年全靠 5 只半导体。Arkanum WP no.4：买入 6 个月相对等权标普 +2.0%，卖出 +3.4%——买的不比卖的好。AIQuantBench：全部买入 10.6%/年 = 随机水平，相对 SPY 12.6% 对 14.9%。Oliveira：买入 1 年相对标普 −5.36 点；委员会相关买入相对市场仅 +0.40 点。活的实现 NANC（2023-02 上市）：Sharpe 1.45 < SPY 1.52。最后一条绕路（领导人专属，Wei & Zhou NBER W34524 +47 点/年，交易日口径、n=20、工作论文）本轮用 CapitolAlpha 快照实测：众议院领导人买入 88 笔、有 ticker 仅 43 笔 <100 下限，2021 年后仅 21 笔、2022 熊市段仅 8 笔，连探索性回测的统计效力都没有。免费数据只有 2020–2025（6 年），到不了 2006 年。方向关闭：重开条件仅为 (a) 有预注册研究在披露日口径下做出显著正 alpha，或 (b) 用户批付费数据把窗口拉到 10 年以上（先验通过率仍 <10%）。产物：goals/idea-catalog/hidden_files/2026-11-25-daily-digging/HUNT_dir3_congress.md。\n\n2026-11-26 补充（方向 3 猎手，HUNT_dir3_congress.md）：独立证据增至 7 项，全部为负。新增 DataDrivenInvestor（Moti Cohen，2026-11-16，442 笔 2026-06→09 新申报买入，披露日后首个交易日收盘进场平均 −1.4%、同期 SPY +1.3%，−2.7 点，仅 40% 跑赢；大额 ≥$15,001 的 55 笔仍输 −3.1 点；中位延迟 23 天）与 TradeInContext（2026-11-14，四种抄法全败，最好 20 天持有每笔 −0.15%，长持有每笔 −1.5%～−8%）。NANC 11 月继续跑输（1 个月 −13.96% 对 SPY −10.77%，截至 11-20）。数据精度纠正：CapitolAlpha 快照原始交易日跨 2015–2026（含 2202 年、1935 年披露日等垃垃圾日期与批量补录），transaction_year==2026 是 607 行（非上轮写的 279 行）；清洗须以日期字段为准，众议院披露日 ≤ 交易日 15.3%、参议院披露日全空；清洗后冻结集合 3,978 行（107 位议员、1,192 只 ticker），多人同买 ≥2 位 206 个 ticker-月、大额 ≥$100k 108 笔。两条探索性回测（多人同买 / 大额买入）预注册草稿已冻结（PRE_REGISTER_congress_exploratory_draft.md），等用户批准才跑。结论不变：方向维持关闭。",
   "priority": null,
   "result": null,
   "source": "paper",
@@ -11078,6 +11078,65 @@
   ],
   "title": "国会披露跟单买入（朴素版）",
   "verdict": "fail"
- }  
+ }  ,
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "每月末取 Kalshi 下次 FOMC 五腿隐含利率路径 E（bp）；E ≥ +12.5bp 则下月 100% TLT，E ≤ −12.5bp 则下月 100% SPY，之间维持上月仓位；月频再平衡，切换成本单边 5bps。",
+   "date_added": "2026-11-26",
+   "date_updated": "2026-11-26",
+   "id": "r31-kalshi-fedpath-regime",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-26 探索性回测（exploratory，不合规、不记 win，未走两门 + 分段 + 留出段）。规则见 PRE_REGISTER.md。窗口 2023-05-01→2026-11-25（898 个交易日），42 次月末决策、3 次切换、354 个交易日在 TLT。日 Sharpe 0.721 对 SPY 1.152（月 Sharpe 0.765 对 1.343；同期有效门约 1.65）；累计 +44.6% 对 SPY +80.0%（TLT −10.4%）；最大回撤 −18.9% 对 −18.8%。信号本身两次都看对了方向：2023-06 E=+20.2bp（加息预期）与 2026-07→10 E=+7.8→+17.1bp（加息重定价），2024-07→09 E=−22→−30bp（降息预期）；但 TLT 避风港两次表现相反——2023-07→2024-07 持 TLT 段 SPY +25.9%、TLT −3.5%（股债同跌、higher for longer），2026-08→11 持 TLT 段 SPY −5.2%、TLT +1.3%（避风港只起了约 6 个点的缓冲）。阈值敏感性：0bp → 累计 +40.2%、日 Sharpe 0.683（7 次切换）；±25bp → 从未触发、与 SPY 完全相同（阈值脆弱）；50% SPY + 50% TLT 版 → 累计 +62.1%、日 Sharpe 0.994。样本缺口：窗口仅 3.6 年（远低于 daily 10 年下限）；窗口内 SPY 收盘最大回撤 −18.8%，无 ≥20% 熊市段；切换 3 次 ≪100。结论：Kalshi 利率路径是高质量预期度量（Diercks et al. 2026），但把它翻成 SPY/TLT 轮动赔在股债相关性上——加息预期出现时 TLT 往往也在跌。数据：Kalshi 免费公开 API（无需 key），29 个会议 × 5 腿日蜡烛（144 条腿全量；2023-05 会议 6 腿非标准结构未用、首个决策 2023-05-31；FEDDECISION-24JAN 重复挂牌已剔；24JUN 缺 H26 腿按 P=0 计；价格取成交收盘价、无成交取 bid/ask mid，2023 年早期多为 mid；KXFEDDECISION-25JAN-C25 初拉偶发 0 根、重拉 42 根已补；E 值 4 个决策日已从原始蜡烛文件独立重算核对一致）。产物：goals/idea-catalog/hidden_files/2026-11-26-daily-digging/（PRE_REGISTER.md、pull_e2_kalshi.py、backtest_e2_e2b.py、results_e2.json、HUNT_dir2_polymarket.md）。",
+   "priority": null,
+   "result": null,
+   "source": "self",
+   "source_name": "Kalshi 免费公开 API（KXFEDDECISION 五腿日蜡烛）；本轮猎手设计；Diercks, Katz & Wright (2026)",
+   "source_url": "https://external-api.kalshi.com/trade-api/v2",
+   "status": "backlog",
+   "tags": [
+    "kalshi",
+    "prediction-market",
+    "fed",
+    "rate-path",
+    "regime-switch",
+    "spy",
+    "tlt",
+    "monthly",
+    "exploratory"
+   ],
+   "title": "Kalshi 隐含利率路径区制切换（SPY/TLT）",
+   "verdict": "blocked"
+  },
+  {
+   "aliases": [],
+   "baseline": "SPY buy-hold",
+   "claim": "每月末取 Polymarket“US recession by end of 2026?”YES 价 P；P ≥ 30% 则下月 100% TLT，否则 100% SPY；月频再平衡，切换成本单边 5bps。",
+   "date_added": "2026-11-26",
+   "date_updated": "2026-11-26",
+   "id": "r32-polymarket-recession-regime-2026",
+   "kind": "strategy",
+   "note_url": null,
+   "notes": "2026-11-26 探索性回测（exploratory，不合规、不记 win，未走两门 + 分段 + 留出段）。规则与 r29（E1）完全相同，仅换合约。窗口 2026-01-02→2026-11-25（227 个交易日），10 次月末决策（1–10 月）、2 次切换、21 个交易日在 TLT（4 月）。日 Sharpe −0.308 对 SPY 0.490（月 Sharpe −0.498 对 0.477）；累计 −5.0% 对 SPY +5.9%（TLT −1.9%）；最大回撤 −11.5% 对 −11.5%；4 月内最大回撤 −1.82% 对 SPY −0.85%——4 月在 TLT 里反而跌得更多（2026 年加息重定价下长债与股票同跌）。阈值敏感性：25% → 累计 −4.4%、日 Sharpe −0.264（4 次切换、60 个 TLT 交易日）；50% → 从未触发、与 SPY 完全相同。结论：同一规则在“虚惊一场”的年份里净输约 11 个点——E1 在 2025 年躲掉的回撤，在 2026 年以踏空 + 债跌双倍奉还；阈值规则的假警报成本现已测到。样本缺口：窗口仅 11 个月、10 次决策、切换 2 次 ≪100；无 ≥20% 熊市段；2025 与 2026 合约是不同问题、不可拼接（2025 合约 2026-01-01 收在 0.0015，2026 合约同期约 0.27）。数据：CLOB /prices-history（hist_rec2026_yes.json，767 点，2025-09-30→2026-11-26）。产物：goals/idea-catalog/hidden_files/2026-11-26-daily-digging/（PRE_REGISTER.md、backtest_e2_e2b.py、results_e2b.json、HUNT_dir2_polymarket.md）。",
+   "priority": null,
+   "result": null,
+   "source": "self",
+   "source_name": "Polymarket 公开 API（衰退概率 2026 合约）；本轮猎手设计",
+   "source_url": "https://gamma-api.polymarket.com",
+   "status": "backlog",
+   "tags": [
+    "polymarket",
+    "prediction-market",
+    "recession",
+    "regime-switch",
+    "spy",
+    "tlt",
+    "monthly",
+    "exploratory"
+   ],
+   "title": "Polymarket 衰退概率区制切换 2026 合约（SPY/TLT）",
+   "verdict": "blocked"
+  }
  ]
 }
